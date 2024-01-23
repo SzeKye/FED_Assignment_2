@@ -1,0 +1,104 @@
+*{
+	box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+	margin: 0;
+	overflow-x: hidden;
+}
+
+ul{
+	list-style: none;
+}
+
+/* Index.html*/
+.nav_bar{
+    margin: 2em 2em 0 2em;
+    width: 100%;
+    display: flex;
+    background-color: #FFF;
+    position: sticky;
+    justify-content: center;
+    text-align: center;
+}
+.header_nav_options {
+    float: left;
+    color: #000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+	display: flex;	
+}
+.header_nav_options:hover{
+    color: #003C77;
+    text-decoration: underline;
+}
+
+.hero{
+    display: flex;
+    width: 100%;
+    padding: 0 1em;
+    justify-content: center;
+}
+
+/* Log In. html*/
+.submit-btn{
+    font-size: 15px;
+    padding: 10px 15px;
+    background-color: #003C77;
+    color: #FFF;
+    border: none;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#log-in-container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: auto;
+}
+
+#welcome{
+    display: inline-flex;
+    width: 40%;
+    justify-content: center;
+}
+
+#log-in-form{
+    display: inline-flex;
+    width: 40%;
+}
+#form{
+    width: 100%;
+}
+
+#form h1{
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.form-group{
+    margin: 10px 0;
+}
+input[type=email], input[type=password]{
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    transition: 0.5s;
+    
+}
+
+input:focus{
+    border: 1px solid #003C77;
+}
+.NP-logo{
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
