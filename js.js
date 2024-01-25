@@ -31,13 +31,14 @@ document.addEventListener("DOMContentLoaded",function(){
         e.preventDefault();
 
         let studentName = document.getElementById("student-name").value;
-        let studentID = document.getElementById("student-id").value;
+        let studentEmail = document.getElementById("student-email").value;
         let studentPassword = document.getElementById("student-pswd").value;
         let studentPoint = 0;
 
         let jsondata = {
             "name": studentName,
             "studentID": studentID,
+            "studentEmail": studentEmail,
             "password": studentPassword,
             "school": currentSchool,
             "point": studentPoint
