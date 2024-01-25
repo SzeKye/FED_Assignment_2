@@ -12,12 +12,19 @@ ul{
 }
 
 /* Index.html*/
-.nav_bar{
-    margin: 2em 2em 0 2em;
+.nav-bar{
     width: 100%;
     display: flex;
     background-color: #FFF;
-    justify-content: center;
+    padding: 2em 0 1em 14.5vw;
+    
+}
+#logo-position{
+    margin-right: 45vw;
+}
+
+#profile-section{
+    display: flex;
 }
 .lower-nav-bar{
     display: flex;
@@ -32,24 +39,12 @@ ul{
     text-decoration: none;
     cursor: pointer;
 }
-.header_nav_options {
-    color: #000;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-	display: flex;	
-    cursor: pointer;
-}
-.header_nav_options:hover{
-    color: #003C77;
-    text-decoration: underline;
-}
 
 .more-options-ext{
     position: relative;
     display: inline-block;
     color: #FFF;
+    cursor: default;
 }
 .more-options{
     display: none;
@@ -74,9 +69,22 @@ ul{
     width: 100%;
     padding: 0 1em;
     justify-content: center;
+    position: relative;
 }
 
-.footer_ext{
+.hero img{
+    filter: brightness(60%);
+}
+
+.hero-txt{
+    position: absolute;
+    left: 16vw;
+    bottom: 0px;
+    font-size: 24px;
+    color: #FFF;
+    font-weight: 500;
+}
+.footer-ext{
     background-color: #000;
     display: flex;
     padding: 2em 1em;
@@ -97,8 +105,13 @@ ul{
     text-align: center;
 }
 
+#school-map{
+    display: flex;
+    justify-content: center;
+    
+}
 /* Log In. html*/
-.submit-btn{
+#login-submit{
     font-size: 15px;
     padding: 10px 15px;
     background-color: #003C77;

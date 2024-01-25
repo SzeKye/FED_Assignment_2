@@ -12,15 +12,32 @@
     </head> 
     <body>
         <header>
-            <section class="nav_bar">
-                <a href="index.html" target="_self" ><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
-                <a href="https://www.np.edu.sg/home" target="_blank" class="header_nav_options">Official Website</a>
-                <a href="" target="_blank" class="header_nav_options">Useful Links</a>
+            <section class="nav-bar">
+                <a href="index.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
+                <section>
+                    <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
+                </section>
+                <section id="profile-section">
+                    <img src="../images/profile.png" alt="Porfile icon" width="50">
+                    <p>Name</p>
+                </section>
+
             </section>
             <section class="lower-nav-bar">
                 <a href="#">Practice</a>
                 <a href="#">Leaderboards</a>
                 <a href="#">Shop</a>
+                <section class="more-options-ext">
+                    <p>Useful Links</p>
+                    <section class="more-options">
+                        <a href="#">Student Portal</a>
+                        <a href="#">Npal</a>
+                        <a href="#">PoliteMall</a>
+                        <a href="#">Connect Mail</a>
+                        <a href="#">Library</a>
+                        <a href="#">Whistleblowing</a>
+                    </section>
+                </section>
                 <section class="more-options-ext">
                     <p>More</p>
                     <section class="more-options">
@@ -33,19 +50,19 @@
                 
             </section>
         </header>
+
         <section class="hero">
             <img src="../images/campus.jpg" alt="NP campus">
-        </section>
-        <section>
-            <h1>Welcome back (insert user's name here)</h1>
+            <section class="hero-txt">
+                <h1>Welcome back (insert user's name here)</h1>
+            </section>
         </section>
         
-
-        <section>
+        <section id="school-map">
             <img src="../images/NPMap.PNG" alt="NP Map">
         </section>
-        
-        <footer role="contentinfo" class="footer_ext">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+        <footer role="contentinfo" class="footer-ext">
             <section class="links-ext">
                 <ul class="links">
                     <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
