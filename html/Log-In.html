@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Log In</title>
+        
+        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+        <style>
+            @media screen and (max-width:576px) {
+                #log-in-container{
+                    display: block; 
+                }
+                #welcome, #log-in-form{
+                    display: block;
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <!-- <img src="../images/NPBackground.jpg" alt="Ngee Ann Polytechnic" width="100%" > -->
+            <section class="container">
+                <section class="NP-logo">
+                    <img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200">
+                </section>
+        
+        
+                <section id="log-in-container">
+                    <section id="welcome">
+                        <dotlottie-player src="https://lottie.host/3b6889e5-ae72-48c1-961c-68e8c89d9bcb/vtkTP4tBnb.json" background="transparent" speed="1"  loop hover></dotlottie-player>
+                    </section>
+                    <section id="log-in-form">
+                        <form id="form">
+                            <h1>Welcome back!</h1>
+                            <section class="form-group">
+                                <label for="StudentEmail">Name</label><br>
+                                <input type="text" name="student-email" id="student-name" placeholder="Name" required>
+                            </section>
+                            <section class="form-group">
+                                <label for="StudentEmail">Email</label><br>
+                                <input type="email" name="studentEmail" id="student-email" placeholder="Student email" required>
+                            </section>
+                            <section class="form-group">
+                                <label for="pswd">Enter password</label><br>
+                                <input type="password" name="student-password" id="student-pswd" placeholder="Password" required>
+                                <small><a href="https://passwordreset.microsoftonline.com/?ru=https%3a%2f%2flogin.microsoftonline.com%2fcba9e115-3016-4462-a1ab-a565cba0cdf1%2freprocess%3fctx%3drQQIARAALZC9b9NAAMVtN0lL1NIIlo4MXRDY5wt2bJ_UIUEJCUmUtC5KUySs81dq1bm4vjNJOzFRJmBEjIgBwYIQH0uHiLFTZ_4AQEGqOlZMuKjr7z09_fTyHCqQCIdWFLsWZYnrERZfyxcedejKW_609aGmoaNvZ3_e87s7jEUUAXBRv2xKJJI8N5HoAETUAZcUVNvdVqdfrQKzDCjoVSutRsXqblY2pIZ5d6PR3YRSLfBCtzaKh0mIU-rEQcQsk-GYdfHA-87fNMvtlmXIqqo7ii7aOrZFxYZQNLCmiLora7pTUmVb1054_jfPPxH4H0LWxMOwOBOy4WgQkL-CmsQEjTANKCJ46FHEHHSxi6AE_5PAFf3UATOUEBp5TuAHnvtpbtWxseFBqIp3ZFgSFaVUFDFMDbBaUtNMdlwfnmQWZ5lFeQ4tLOQL3Ap3gzvP8G-y6XcP331dvr466bz4tbV3dPiKO86C5sQMYZdiXw73ItWnxVv61rgvj_Yh6zSbu_fr-7Zs0r5xb0degwi-zC0d57iznPBsnns9z02v8NMl7vzq859fpp-fHp7WZ8u3DybmuhOTctOgY2Vb68XAeMzKPRLVHxQPSADqlZi0t9k4XNfXPha4fw2&mkt=en-US&hosted=0&device_platform=Windows+10&username=s10257172%40connect.np.edu.sg" target="_blank">Forgot Password?</a></small>
+                            </section>
+
+                            <section class="form-group">
+                                <input type="checkbox" id="in">
+                                <label for="in">Stay signed in</label>
+                            </section>
+                            
+                            <input type="submit" name="Log In" id="login-submit">
+                            <p>As an added security measure, please clear your cache after each session. By clicking on the Sign in button, you agree to be bound by the terms specified in the Terms and Conditions. This Service is for Authorized Users Only.</p>
+                        </form>
+                    </section>
+                </section>
+            </section>
+        </section>
+        
+        
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+        <script src="js.js"></script>
+    </body>
+</html>
