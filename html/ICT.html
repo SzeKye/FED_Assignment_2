@@ -2,25 +2,24 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Home</title>
+        <title>ICT</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
         <link rel="stylesheet" href="../css/style.css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">       
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">  
         <style>
-            .link-options{
-                left: -54vw;
+            .lower-nav-bar{
+                position: relative;
+                z-index: 1;
             }
-            .school-options{
-                left: -13vw;
+            .hero{
+                position: relative;
+                margin-top: -7vh;
+                z-index: 0;
             }
-            .link-options{
-                left: -80vw;
-            }
-        </style> 
-    </head> 
+        </style>      
+    </head>
     <body>
         <header>
             <section class="nav-bar">
@@ -76,30 +75,24 @@
                 </section>
             </section>
         </header>
-
         <section class="hero">
-            <img src="../images/campus.jpg" alt="NP campus">
-            <section class="hero-txt">
-                <h1>Welcome back (<span id="name-of-student"></span>)</h1>
-            </section>
+            <img src="../images/ICTBackground3.png" alt="ICT" height="300">
+            
         </section>
-        
-        <section id="school-map">
-            <img src="../images/NPMap.PNG" alt="NP Map">
+        <section class="container mt-5">
+            <h2>ICT Leaderboard (<span id="total-contacts"></span>)</h2>
+            <table class="table" id="contact-list">
+                <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Student ID</th>
+                <th>Score</th>                 
+                </thead>
+                <!-- This will be filled with information later -->
+                <tbody></tbody>
+            </table>
         </section>
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-        <footer role="contentinfo" class="footer-ext">
-            <section class="links-ext">
-                <ul class="links">
-                    <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
-                    <li><a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login&languageCd=ENG&" target="_blank">Npal</a></li>
-                    <li><a href="https://nplms.polite.edu.sg/d2l/home">PoliteMall</a></li>
-                    <li><a href="https://outlook.office365.com/mail/" target="_blank">Connect Mail</a></li>
-                    <li><a href="https://www.np.edu.sg/library" target="_blank">Library</a></li>
-                    <li><a href="https://www.np.edu.sg/about-np/contact/tell-np/whistle-blowing-for-students" target="_blank">Whistleblowing</a></li>
-                </ul>
-            </section>
-                
-        </footer>
+        <footer></footer>
     </body>
 </html>
