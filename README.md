@@ -1,7 +1,6 @@
 # FED_Assignment_2
 ## Our theme: School
-### Idea: Educational website that motivates students to 
-complete their assignments
+### Idea: Educational website that motivates students to complete their assignments
 
 ### Idea description
 With the idea of motivating more students to attempt 

@@ -24,10 +24,18 @@
     <body>
         <header>
             <section class="nav-bar">
+
                 <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
+
+                <section class="student-total-points">
+                    <img src="../images/XP-icon.png" alt="student points" height="50">
+                    <h1>(<span id="total-points"></span>)</h1> <!-- use js to get the total points of the students from the database -->
+                </section>
+                
                 <section>
                     <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
                 </section>
+
                 <section id="profile-section">
                     <section class="more-options-ext">
                         <img src="../images/profile.png" alt="Porfile icon" width="50">
@@ -43,7 +51,7 @@
                             </ul>
                         </section>
                     </section>
-                    <p>Name</p>
+                    <p>(<span id="name-of-student"></span>)</p> <!-- use js to get the name of the student and put it here -->
                 </section>
 
             </section>
@@ -66,12 +74,12 @@
                 <section class="more-options-ext">
                     <a href="#">Useful links</a>
                     <section class="link-options">
-                        <a href="#">Student Portal</a>
-                        <a href="#">Npal</a>
-                        <a href="#">PoliteMall</a>
-                        <a href="#">Connect Mail</a>
-                        <a href="#">Library</a>
-                        <a href="#">Whistleblowing</a>
+                        <a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a>
+                        <a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login" target="_blank">Npal</a>
+                        <a href="https://politemall.polite.edu.sg/" target="_blank">PoliteMall</a>
+                        <a href="https://www.np.edu.sg/login/full-time-students/connect-mail" target="_blank">Connect Mail</a>
+                        <a href="https://www.np.edu.sg/library" target="_blank">Library</a>
+                        <a href="https://www.np.edu.sg/about-np/contact/tell-np" target="_blank">Whistleblowing</a>
                     </section>
                 </section>
             </section>
@@ -80,10 +88,16 @@
         <section class="hero">
             <img src="../images/campus.jpg" alt="NP campus">
             <section class="hero-txt">
-                <h1>Welcome back (<span id="name-of-student"></span>)</h1>
+                <h1>Welcome back (<span id="name-of-student"></span>)</h1> <!-- use js to get the name of the student and put it here -->
             </section>
         </section>
-        
+        <section>
+            <h1>Select your school, start practicing, earn points to redeem NP merch and more!</h1>
+            <br>
+            <h1>Another kind of Xtra</h1>
+            <p>Your learning is not confined the learning does not stop there either head over to our other schools<br>
+                to have a go at what they are learning!</p>
+        </section>
         <section id="school-map">
             <img src="../images/NPMap.PNG" alt="NP Map">
         </section>
