@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",function(){
     const APIKEY = "65ae017a083aceac0b9cf117"
-
+    let currentUser;
 
 
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded",function(){
             "password": studentPassword,
             "point": studentPoint
         };
-
+        currentUser = jsondata;
         let settings = {
             method: "POST",
             headers: {
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 alert("Login successful!");
                 
                 // Set the current user
-                let currentUser = userData[0]; // Assuming userData is an array with only one user object
+                currentUser = userData[0]; // Assuming userData is an array with only one user object
                 console.log(currentUser); // Display the current user for testing purposes
             } else {
                 // Authentication failed
@@ -100,19 +100,41 @@ document.addEventListener("DOMContentLoaded",function(){
             .catch((error) => console.error("Error fetching students: ",error));
     }
 
-    document.getElementById("business-school").addEventListener("click",function(e){
+    document.getElementById("business-school").addEventListener("click",async function(e){
         e.preventDefault();
-        changeSchool("Business");
+        currentUser.currentSchool = "Business";
+        const updateResponse = await fetch(`https://your-restdb-url/rest/student/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': API_KEY // Your API key
+        },
+        body: JSON.stringify(currentUser)
     });
-
-    document.getElementById("it-school").addEventListener("click",function(e){
-        e.preventDefault();
-        changeSchool("IT")
-    });
-
-    function changeSchool(newSchool){
-        currentSchool = newSchool;
+    if (updateResponse.ok) {
+        console.log("User's current school updated successfully!");
+    } else {
+        console.error("Failed to update user's current school.");
     }
+    });
+
+    document.getElementById("it-school").addEventListener("click",async function(e){
+        e.preventDefault();
+        currentUser.currentSchool = "Information Technology";
+        const updateResponse = await fetch(`https://your-restdb-url/rest/student/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': API_KEY // Your API key
+        },
+        body: JSON.stringify(currentUser)
+    });
+    if (updateResponse.ok) {
+        console.log("User's current school updated successfully!");
+    } else {
+        console.error("Failed to update user's current school.");
+    }
+    });
 
     document.getElementById("update-leaderboard1").addEventListener("click", function (e) {
         e.preventDefault();
