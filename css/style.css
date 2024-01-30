@@ -320,3 +320,39 @@ input:focus{
 	font-size: 22px;
 	color: #FFFFFF;
 }
+
+#product-nav-padding {
+	padding: 21px 0px;
+}
+
+#product-types {
+	display: flex;
+	justify-content: center;
+	gap: 80px;
+	font-size: 24px;
+	font-weight: 500;
+}
+#product-types a{
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+}
+.item-layout{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+}
+.item-thumbnail{
+    display: flex;
+    flex-direction: column;
+}
+.item-image{
+    border:#000 1px solid;
+    
+}
+.item-image img{
+    height: 50vh;
+}
+.item-des{
+    border: #003C77 1px dashed;
+}
