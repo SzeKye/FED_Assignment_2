@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded",function(){
     const APIKEY = "65ae017a083aceac0b9cf117"
-    let currentUser;
-
-
 
     document.getElementById("sign-up-submit").addEventListener("click",function(e){
         e.preventDefault();

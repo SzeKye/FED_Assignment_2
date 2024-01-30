@@ -1,7 +1,6 @@
-
+var currentUser;
 
 document.addEventListener("DOMContentLoaded",function(){
-    
     const APIKEY = "65ae017a083aceac0b9cf117"
     
 
@@ -31,12 +30,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 // Set the current user
                 currentUser = userData[0]; // Assuming userData is an array with only one user object
                 console.log(currentUser); // Display the current user for testing purposes
-                console.log(document.getElementById("total-points"));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 
-                point = currentUser.point;
-                document.getElementById("total-points").innerHTML = point;
-                
-                
+  
             } else {
                 // Authentication failed
                 alert("Invalid email or password. Please try again.");
@@ -46,5 +42,4 @@ document.addEventListener("DOMContentLoaded",function(){
             alert("An error occurred. " + error);
         }
     });
-
 });
