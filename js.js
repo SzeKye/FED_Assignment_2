@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve current user from localStorage  
+    localStorage.clear
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     
     if (currentUser) {
@@ -13,6 +14,17 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("name-of-student2").innerHTML = currentUser.name;
         }
     }
+
+    fetch(`https://api.data.gov.sg/v1/environment/2-hour-weather-forecast`)
+        .then(response => response.json())
+        .then(data => {
+            const forecasts = data.items[0].forecasts;
+            const clementiForecast = forecasts.find(forecast => forecast.area === 'Clementi');
+
+            console.log(clementiForecast);
+        })
+
+    
     
     document.getElementById("business-school").addEventListener("click",async function(e){
         e.preventDefault();
