@@ -104,4 +104,61 @@ const itQuizData = [
     }
   ];
   
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  function loadQuiz(quizData){
+    const currentQuiz = quizData;
+    const questionOption = document.getElementById("option");
+    questionOption.innerHTML = "";
+    let currentQuestion = quizData[currentQuestionIndex];
+    let currentQuestionText = currentQuestion.question;
+    let currentQuestionOption = currentQuestion.options;
+    ques.innerHTML = currentQuestionText;
+    
+    currentQuestionOption.forEach(option => {
+      const radioInput = document.createElement("input");
+      radioInput.type = "radio";
+      radioInput.name = "answer";
+      radioInput.value = option;
+
+      const optionLabel = document.createElement("label");
+        optionLabel.textContent = option;
+
+        questionOption.appendChild(radioInput);
+        questionOption.appendChild(optionLabel);
+        questionOption.appendChild(document.createElement("br"));
+    })
+  }
+
+  function loadScore(){
+    const totalScore = document.getElementById("score");
+    totalScore.textContent = `Your score is ${score}`;
+
+  }
+
+  function nextQues(quizData){
+    if (currentQuestionIndex < quizData.length - 1) {
+      currentQuestionIndex++;
+      loadQuiz(quizData);
+    } 
+    else {
+      document.getElementById("option").remove()
+      document.getElementById("ques").remove()
+      document.getElementById("btn").remove()
+      loadScore();
+    }
+  }
+
+  function checkAns(currentQuiz) {
+    const selectedAns = document.querySelector('input[name="answer"]:checked').value;
+ 
+    if (selectedAns === currentQuiz[currentQuestionIndex].correctAnswer) {
+        score++;
+
+    } 
+    nextQues(currentQuiz);
+}
+
+loadQuiz(itQuizData);
   

@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     if (updateResponse.ok) {
         console.log("User's current school updated successfully!");
+        loadQuiz(businessQuizData);
     } else {
         console.error("Failed to update user's current school.");
     }
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     if (updateResponse.ok) {
         console.log("User's current school updated successfully!");
+        loadQuiz(itQuizData)
     } else {
         console.error("Failed to update user's current school.");
     }
