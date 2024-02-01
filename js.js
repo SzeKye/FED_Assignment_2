@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve current user from localStorage  
-    localStorage.clear
+    const APIKEY = "65ae017a083aceac0b9cf117"
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     
     if (currentUser) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("business-school").addEventListener("click",async function(e){
         e.preventDefault();
         currentUser.currentSchool = "Business";
-        const updateResponse = await fetch(`https://your-restdb-url/rest/student/${currentUser._id}`, {
+        const updateResponse = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -40,6 +40,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (updateResponse.ok) {
         console.log("User's current school updated successfully!");
         loadQuiz(businessQuizData);
+        const updateResponse = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': APIKEY // Your API key
+        },
+        body: JSON.stringify(currentUser)
+    });
+
     } else {
         console.error("Failed to update user's current school.");
     }
@@ -59,6 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (updateResponse.ok) {
         console.log("User's current school updated successfully!");
         loadQuiz(itQuizData)
+        const updateResponse = await fetch(`https://your-restdb-url/rest/student/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': APIKEY // Your API key
+        },
+        body: JSON.stringify(currentUser)
+    });
     } else {
         console.error("Failed to update user's current school.");
     }

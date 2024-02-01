@@ -1,3 +1,4 @@
+const APIKEY = "65ae017a083aceac0b9cf117"
 const itQuizData = [
     {
       question: 'What does "HTML" stand for?',
@@ -104,6 +105,7 @@ const itQuizData = [
     }
   ];
   
+  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
   let currentQuestionIndex = 0;
   let score = 0;
 
@@ -133,8 +135,19 @@ const itQuizData = [
 
   function loadScore(){
     const totalScore = document.getElementById("score");
+    currentUser.score = score
     totalScore.textContent = `Your score is ${score}`;
-
+    
+    
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+    const updateResponse = fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': APIKEY // Your API key
+        },
+        body: JSON.stringify(currentUser)
+    });
   }
 
   function nextQues(quizData){
@@ -161,4 +174,3 @@ const itQuizData = [
 }
 
 loadQuiz(itQuizData);
-  
