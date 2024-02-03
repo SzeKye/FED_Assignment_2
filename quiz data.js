@@ -104,7 +104,27 @@ const itQuizData = [
       correctAnswer: 'Expanding Product Line'
     }
   ];
-  
+  generalQuizData = [];
+  fetchQuestions();
+  async function fetchQuestions() {
+    try {
+        const response = await fetch('https://opentdb.com/api.php?amount=20&category=9&type=multiple');
+        if (!response.ok) {
+            throw new Error(`Something went wrong!!
+        Unable to fecth the data`);
+        }
+        const data = await response.json();
+        console.log(data);
+        generalQuizData = data.results;
+        console.log(generalQuizData);
+    }
+    catch (error) {
+        console.log(error);
+        ques.innerHTML = `<h5 style='color: red'>
+        ${error}</h5>`;
+    }
+}
+
   var currentUser = JSON.parse(localStorage.getItem('currentUser'));
   let currentQuestionIndex = 0;
   let score = 0;
@@ -135,7 +155,13 @@ const itQuizData = [
 
   function loadScore(){
     const totalScore = document.getElementById("score");
-    currentUser.score = score
+    if(generalQuiz){
+      currentUser.generalScore = score;
+    }
+    else{
+      currentUser.score = score;
+    }
+    
     totalScore.textContent = `Your score is ${score}`;
     
     
@@ -173,4 +199,15 @@ const itQuizData = [
     nextQues(currentQuiz);
 }
 
-loadQuiz(itQuizData);
+document.addEventListener("DOMContentLoaded", function() {
+  // Check if the currentUser is in Business school
+
+  if (currentUser && currentUser.school === "Business") {
+      // Dispatch the "businessQuiz" event
+      loadQuiz(businessQuizData);
+  }
+  else if(currentUser && currentUser.school === "Information Technology"){
+    loadQuiz(itQuizData);
+  }
+
+});
