@@ -118,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         if(response.ok){
             const data = await response.json();
-            const itStudent = data.filter(student => student.school === "Business");
-            const sortedScores = itStudent.sort((a,b) => b.score - a.score);
-            for (let i = 0; i < 10 && i < sortedScores.length; i++) {
+            const businessStudent = data.filter(student => student.school === "Business");
+            const sortedScores = businessStudent.sort((a,b) => b.score - a.score);
+            for (let i = 0; i < 10; i++) {
                 const student = sortedScores[i];
                 console.log(`${student.name} ${student.score}`);
             }
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(response.ok){
             const data = await response.json();
             const sortedScores = data.sort((a,b) => b.generalScore - a.generalScore);
-            for (let i = 0; i < 10 && i < sortedScores.length; i++) {
+            for (let i = 0; i < 10; i++) {
                 const student = sortedScores[i];
                 console.log(`${student.name} ${student.generalScore}`);
             }
