@@ -24,11 +24,51 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(clementiForecast);
         })
 
-    
+
+    function firstDay(date){
+        return date.getDate() === 1;
+    }
+
+    async function resetScoreTry(){
+        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            });
+
+        const student = await response.json();
+        const updatedStudent = student.map(student => {
+            student.score = 0;
+            return student;
+        })
+
+        for(const student of updatedStudent){
+            const updateResponse = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${student._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            body: JSON.stringify(student)
+            });
+        }
+    }
+
+    function checkDate(){
+        const currentDate = new Date();
+        const currentHour = currentDate.getHours();
+        const currentMin = currentDate.getMinutes();
+        if(firstDay(currentDate) && currentHour === 0 && currentMin === 0){
+            resetScoreTry();
+        }
+    }
+    checkDate();
     
     document.getElementById("business-school").addEventListener("click",async function(e){
         e.preventDefault();
-        if(currentUser.school === "Business" || currentUser.school === null){
+        if((currentUser.school === "Business" || currentUser.school === undefined) && (currentUser.quiztry < 1 || currentUser.quiztry === undefined)){
             
             currentUser.school = "Business";
             localStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -47,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Failed to update user's current school.");
             }
             
+        }else if(currentUser.quiztry === 1){
+            alert("You had reached maximum of try per month!");
         }else{
             alert("You are not in Business school!");
         }
@@ -55,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("it-school").addEventListener("click",async function(e){
         e.preventDefault();
-        if(currentUser.school === "Information Technology" || currentUser.school === null){
+        if((currentUser.school === "Information Technology" || currentUser.school === undefined) && (currentUser.quiztry < 1 || currentUser.quiztry === undefined)){
             
             currentUser.school = "Information Technology";
             localStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -68,11 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify(currentUser)
             });
             if (updateResponse.ok) {
-                console.log("User's current school updated successfully!");
+                
                 window.location.href = "quiz.html";
             } else {
                 console.error("Failed to update user's current school.");
             }
+        }else if(currentUser.quiztry === 1){
+            alert("You had reached maximum of try per month!");
         }else{
             alert("You are not in IT school!");
         }

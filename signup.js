@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded",function(){
             "password": studentPassword,
             "point": studentPoint
         };
+
+        fetch("https://fedassignment2-ba48.restdb.io/rest/student",{
+            
+        })
+        
         currentUser = jsondata;
         let settings = {
             method: "POST",

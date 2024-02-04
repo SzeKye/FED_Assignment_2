@@ -155,13 +155,9 @@ const itQuizData = [
 
   function loadScore(){
     const totalScore = document.getElementById("score");
-    if(generalQuiz){
-      currentUser.generalScore = score;
-    }
-    else{
-      currentUser.score = score;
-    }
-    
+
+    currentUser.score = score;
+      currentUser.quiztry = 1;
     totalScore.textContent = `Your score is ${score}`;
     
     
@@ -189,9 +185,14 @@ const itQuizData = [
     }
   }
 
-  function checkAns(currentQuiz) {
+  function checkAns() {
+    if(currentUser.school === "Information Technology"){
+      currentQuiz = itQuizData;
+    }else if(currentUser.school === "Business"){
+      currentQuiz = businessQuizData;
+    }
     const selectedAns = document.querySelector('input[name="answer"]:checked').value;
- 
+    
     if (selectedAns === currentQuiz[currentQuestionIndex].correctAnswer) {
         score++;
 
