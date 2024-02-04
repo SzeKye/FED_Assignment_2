@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded",function(){
-    const APIKEY = "65ae017a083aceac0b9cf117"
+    const APIKEY = "65ae017a083aceac0b9cf117";
 
-    document.getElementById("sign-up-submit").addEventListener("click",function(e){
+    document.getElementById("sign-up-submit").addEventListener("click",async function(e){
         e.preventDefault();
 
         let studentName = document.getElementById("student-name").value;
@@ -16,32 +16,54 @@ document.addEventListener("DOMContentLoaded",function(){
             "point": studentPoint
         };
 
-        fetch("https://fedassignment2-ba48.restdb.io/rest/student",{
-            
-        })
-        
-        currentUser = jsondata;
-        let settings = {
-            method: "POST",
+
+        async function checkExistEmail(studentEmail){
+            const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student?q={"studentEmail":"${studentEmail}"}`, {
+            method: 'GET',
             headers: {
-                "Content-Type": "application/json",
-                "x-apikey": APIKEY,
-                "Cache-Control": "no-cache"
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
             },
-            body: JSON.stringify(jsondata),
-            beforeSend: function() {
-                document.getElementById("sign-up-submit").disabled = true;
-                document.getElementById("sign-up-form").reset();
-            }
-        }
-
-        fetch("https://fedassignment2-ba48.restdb.io/rest/student",settings)
-            .then(response => response.json())
-            .then(data => {
+            });
+            if(response.ok){
+                const data = await response.json();
                 console.log(data);
-                console.log("haha");
-                document.getElementById("sign-up-submit").disabled = false;
+                if(data.length > 0){
+                    alert("There is existing email!");
+                }else{
+                    currentUser = jsondata;
+                    let settings = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-apikey": APIKEY,
+                        "Cache-Control": "no-cache"
+                    },
+                    body: JSON.stringify(jsondata),
+                    beforeSend: function() {
+                        document.getElementById("sign-up-submit").disabled = true;
+                        document.getElementById("sign-up-form").reset();
+                        }
+                    }
 
-            })
+                fetch("https://fedassignment2-ba48.restdb.io/rest/student",settings)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        document.getElementById("sign-up-submit").disabled = false;
+
+                    })
+                    alert("Sign-up successfully!");
+                    window.location.href = "home.html";
+                }
+                
+            }else{
+                console.log("failed to fetch data");
+            } 
+        }
+        
+        await checkExistEmail(studentEmail);
+        
+        
         });
     });

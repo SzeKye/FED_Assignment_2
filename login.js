@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 currentUser = userData[0]; // Assuming userData is an array with only one user object
                 console.log(currentUser); // Display the current user for testing purposes
                 localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                
+                window.location.href = "home.html";
   
             } else {
                 // Authentication failed
