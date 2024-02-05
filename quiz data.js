@@ -105,7 +105,6 @@ const itQuizData = [
     }
   ];
   generalQuizData = [];
-  fetchQuestions();
   async function fetchQuestions() {
     try {
         const response = await fetch('https://opentdb.com/api.php?amount=20&category=9&type=multiple');
@@ -115,7 +114,17 @@ const itQuizData = [
         }
         const data = await response.json();
         console.log(data);
-        generalQuizData = data.results;
+        const updatedData = data.results.map(result => {
+          const unmixedOption = result.incorrect_answers.concat(result.correct_answer);
+          const mixedOption = shuffleGeneralOption(unmixedOption);
+          return {
+            question: result.question,
+            options: mixedOption,
+            correctAnswer: result.correct_answer
+          }
+          
+        })
+        generalQuizData = updatedData;
         console.log(generalQuizData);
     }
     catch (error) {
@@ -125,12 +134,23 @@ const itQuizData = [
     }
 }
 
+//This function is used to shuffle the option in the generalQuizData to avoid answer always be at the last option
+function shuffleGeneralOption(quizOption) {
+  for (let i = quizOption.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); //This is to find random option to change with option[i]
+    [quizOption[i], quizOption[j]] = [quizOption[j], quizOption[i]]; //Switch the two option
+  }
+  return quizOption;
+}
+
   var currentUser = JSON.parse(localStorage.getItem('currentUser'));
   let currentQuestionIndex = 0;
   let score = 0;
+  var currentQuiz;
+  var check;
 
   function loadQuiz(quizData){
-    const currentQuiz = quizData;
+    currentQuiz = quizData;
     const questionOption = document.getElementById("option");
     questionOption.innerHTML = "";
     let currentQuestion = quizData[currentQuestionIndex];
@@ -155,9 +175,17 @@ const itQuizData = [
 
   function loadScore(){
     const totalScore = document.getElementById("score");
-
-    currentUser.score = score;
+    if(check){
+      currentUser.generalScore = score;
+      currentUser.generalquiztry = 1;
+      currentUser.point += score * 5;
+    }
+    else{
+      currentUser.score = score;
       currentUser.quiztry = 1;
+      currentUser.point += score * 5;
+    }
+    console.log(currentUser.point)
     totalScore.textContent = `Your score is ${score}`;
     
     
@@ -186,11 +214,7 @@ const itQuizData = [
   }
 
   function checkAns() {
-    if(currentUser.school === "Information Technology"){
-      currentQuiz = itQuizData;
-    }else if(currentUser.school === "Business"){
-      currentQuiz = businessQuizData;
-    }
+
     const selectedAns = document.querySelector('input[name="answer"]:checked').value;
     
     if (selectedAns === currentQuiz[currentQuestionIndex].correctAnswer) {
@@ -200,15 +224,26 @@ const itQuizData = [
     nextQues(currentQuiz);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  // Check if the currentUser is in Business school
+document.addEventListener("DOMContentLoaded", async function () {
+
+  await fetchQuestions();
 
   if (currentUser && currentUser.school === "Business") {
-      // Dispatch the "businessQuiz" event
       loadQuiz(businessQuizData);
-  }
-  else if(currentUser && currentUser.school === "Information Technology"){
-    loadQuiz(itQuizData);
+      currentQuiz = businessQuizData;
+  } else if (currentUser && currentUser.school === "Information Technology") {
+      loadQuiz(itQuizData);
+      currentQuiz = itQuizData;
   }
 
+  document.getElementById("generalQuiz").addEventListener("click", function () {
+    if(currentUser.generalquiztry === 1){
+      alert("Maximum try per day is reached!");
+    }else{
+      loadQuiz(generalQuizData);
+      currentQuiz = generalQuizData;
+      check = true;
+    }
+      
+  });
 });
