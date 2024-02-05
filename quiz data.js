@@ -1,3 +1,4 @@
+const APIKEY = "65ae017a083aceac0b9cf117"
 const itQuizData = [
     {
       question: 'What does "HTML" stand for?',
@@ -103,5 +104,111 @@ const itQuizData = [
       correctAnswer: 'Expanding Product Line'
     }
   ];
-  
-  
+  generalQuizData = [];
+  fetchQuestions();
+  async function fetchQuestions() {
+    try {
+        const response = await fetch('https://opentdb.com/api.php?amount=20&category=9&type=multiple');
+        if (!response.ok) {
+            throw new Error(`Something went wrong!!
+        Unable to fecth the data`);
+        }
+        const data = await response.json();
+        console.log(data);
+        generalQuizData = data.results;
+        console.log(generalQuizData);
+    }
+    catch (error) {
+        console.log(error);
+        ques.innerHTML = `<h5 style='color: red'>
+        ${error}</h5>`;
+    }
+}
+
+  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  function loadQuiz(quizData){
+    const currentQuiz = quizData;
+    const questionOption = document.getElementById("option");
+    questionOption.innerHTML = "";
+    let currentQuestion = quizData[currentQuestionIndex];
+    let currentQuestionText = currentQuestion.question;
+    let currentQuestionOption = currentQuestion.options;
+    ques.innerHTML = currentQuestionText;
+    
+    currentQuestionOption.forEach(option => {
+      const radioInput = document.createElement("input");
+      radioInput.type = "radio";
+      radioInput.name = "answer";
+      radioInput.value = option;
+
+      const optionLabel = document.createElement("label");
+        optionLabel.textContent = option;
+
+        questionOption.appendChild(radioInput);
+        questionOption.appendChild(optionLabel);
+        questionOption.appendChild(document.createElement("br"));
+    })
+  }
+
+  function loadScore(){
+    const totalScore = document.getElementById("score");
+
+    currentUser.score = score;
+      currentUser.quiztry = 1;
+    totalScore.textContent = `Your score is ${score}`;
+    
+    
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+    const updateResponse = fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': APIKEY // Your API key
+        },
+        body: JSON.stringify(currentUser)
+    });
+  }
+
+  function nextQues(quizData){
+    if (currentQuestionIndex < quizData.length - 1) {
+      currentQuestionIndex++;
+      loadQuiz(quizData);
+    } 
+    else {
+      document.getElementById("option").remove()
+      document.getElementById("ques").remove()
+      document.getElementById("btn").remove()
+      loadScore();
+    }
+  }
+
+  function checkAns() {
+    if(currentUser.school === "Information Technology"){
+      currentQuiz = itQuizData;
+    }else if(currentUser.school === "Business"){
+      currentQuiz = businessQuizData;
+    }
+    const selectedAns = document.querySelector('input[name="answer"]:checked').value;
+    
+    if (selectedAns === currentQuiz[currentQuestionIndex].correctAnswer) {
+        score++;
+
+    } 
+    nextQues(currentQuiz);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Check if the currentUser is in Business school
+
+  if (currentUser && currentUser.school === "Business") {
+      // Dispatch the "businessQuiz" event
+      loadQuiz(businessQuizData);
+  }
+  else if(currentUser && currentUser.school === "Information Technology"){
+    loadQuiz(itQuizData);
+  }
+
+});

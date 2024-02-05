@@ -1,108 +1,198 @@
-document.addEventListener("DOMContentLoaded",function(){
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve current user from localStorage  
     const APIKEY = "65ae017a083aceac0b9cf117"
-    getStudents();
-    document.getElementById("add-update-msg").style.display = "none";
-
-    document.getElementById("business-school").addEventListener("click",function(e){
-        e.preventDefault();
-        changeSchool("Business");
-    });
-
-    document.getElementById("it-school").addEventListener("click",function(e){
-        e.preventDefault();
-        changeSchool("IT")
-    });
-
-    function changeSchool(newSchool){
-        currentSchool = newSchool;
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (currentUser) {
+        // Update student name element
+        document.getElementById("name-of-student1").innerHTML = currentUser.name;
+        
+        document.getElementById("total-points").innerHTML = currentUser.point;
+        var name2 = document.getElementById("name-of-student2");
+        if(name2){
+            document.getElementById("name-of-student2").innerHTML = currentUser.name;
+        }
     }
 
-    document.getElementById("update-leaderboard1").addEventListener("click", function (e) {
-        e.preventDefault();
-        getStudentsBySchool("Business");
-      });
+    fetch(`https://api.data.gov.sg/v1/environment/2-hour-weather-forecast`)
+        .then(response => response.json())
+        .then(data => {
+            const forecasts = data.items[0].forecasts;
+            const clementiForecast = forecasts.find(forecast => forecast.area === 'Clementi');
 
-      document.getElementById("update-leaderboard2").addEventListener("click", function (e) {
-        e.preventDefault();
-        getStudentsBySchool("IT");
-      });
+            console.log(clementiForecast);
+        })
 
-    document.getElementById("login-submit").addEventListener("click",function(e){
-        e.preventDefault();
 
-        let studentName = document.getElementById("student-name").value;
-        let studentEmail = document.getElementById("student-email").value;
-        let studentPassword = document.getElementById("student-pswd").value;
-        let studentPoint = 0;
+    function firstDay(date){
+        return date.getDate() === 1;
+    }
 
-        let jsondata = {
-            "name": studentName,
-            "studentID": studentID,
-            "studentEmail": studentEmail,
-            "password": studentPassword,
-            "school": currentSchool,
-            "point": studentPoint
-        };
-
-        let settings = {
-            method: "POST",
+    async function resetScoreTry(){
+        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
+            method: 'GET',
             headers: {
-                "Content-Type": "application/json",
-                "x-apikey": APIKEY,
-                "Cache-Control": "no-cache"
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
             },
-            body: JSON.stringify(jsondata),
-            beforeSend: function() {
-                document.getElementById("login-submit").disabled = true;
-                document.getElementById("add-login-form").reset();
+            });
+
+        const student = await response.json();
+        const updatedStudent = student.map(student => {
+            student.score = 0;
+            return student;
+        })
+
+        for(const student of updatedStudent){
+            const updateResponse = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${student._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            body: JSON.stringify(student)
+            });
+        }
+    }
+
+    function checkDate(){
+        const currentDate = new Date();
+        const currentHour = currentDate.getHours();
+        const currentMin = currentDate.getMinutes();
+        if(firstDay(currentDate) && currentHour === 0 && currentMin === 0){
+            resetScoreTry();
+        }
+    }
+    checkDate();
+    
+    document.getElementById("business-school").addEventListener("click",async function(e){
+        e.preventDefault();
+        if((currentUser.school === "Business" || currentUser.school === undefined) && (currentUser.quiztry < 1 || currentUser.quiztry === undefined)){
+            
+            currentUser.school = "Business";
+            localStorage.setItem('currentUser', JSON.stringify(currentUser))
+            const updateResponse = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            body: JSON.stringify(currentUser)
+            });
+            if (updateResponse.ok) {
+                console.log("User's current school updated successfully!");
+                window.location.href = "quiz.html";
+            } else {
+                console.error("Failed to update user's current school.");
+            }
+            
+        }else if(currentUser.quiztry === 1){
+            alert("You had reached maximum of try per month!");
+        }else{
+            alert("You are not in Business school!");
+        }
+        
+    });
+
+    document.getElementById("it-school").addEventListener("click",async function(e){
+        e.preventDefault();
+        if((currentUser.school === "Information Technology" || currentUser.school === undefined) && (currentUser.quiztry < 1 || currentUser.quiztry === undefined)){
+            
+            currentUser.school = "Information Technology";
+            localStorage.setItem('currentUser', JSON.stringify(currentUser))
+            const updateResponse = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            body: JSON.stringify(currentUser)
+            });
+            if (updateResponse.ok) {
+                
+                window.location.href = "quiz.html";
+            } else {
+                console.error("Failed to update user's current school.");
+            }
+        }else if(currentUser.quiztry === 1){
+            alert("You had reached maximum of try per month!");
+        }else{
+            alert("You are not in IT school!");
+        }
+    });
+
+    document.getElementById("general").addEventListener("click",async function(e){
+        e.preventDefault();
+        document.dispatchEvent(new Event("generalQuiz"));
+        window.location.href = "quiz.html";
+    })
+
+    document.getElementById("it-leaderboard").addEventListener("click", async function (e) {
+        e.preventDefault();
+        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            });
+        if(response.ok){
+            const data = await response.json();
+            const itStudent = data.filter(student => student.school === "Information Technology");
+            const sortedScores = itStudent.sort((a,b) => b.score - a.score);
+            for (let i = 0; i < 10; i++) {
+                const student = sortedScores[i];
+                console.log(`${student.name} ${student.score}`);
             }
         }
-
-        fetch("https://fedassignment2-ba48.restdb.io/rest/student",settings)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                document.getElementById("login-submit").disabled = false;
-                document.getElementById("add-update-msg").style.display = "block";
-                setTimeout(function(){
-                    document.getElementById("add-update-msg").style.display = "none";
-                }, 3000);
-                getStudents();
-                })
-            })
-    
-    
-    function getStudentsBySchool(schooltype){
-        let settings = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "x-apikey": APIKEY,
-                "Cache-Control": "no-cache"
-            },
+        else{
+            console.log("failed to fetch");
         }
+      });
 
-        fetch("https://fedassignment2-ba48.restdb.io/rest/student", settings)
-            .then(response => response.json())
-            .then(response => {
+      document.getElementById("business-leaderboard").addEventListener("click", async function (e) {
+        e.preventDefault();
+        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            });
+        if(response.ok){
+            const data = await response.json();
+            const businessStudent = data.filter(student => student.school === "Business");
+            const sortedScores = businessStudent.sort((a,b) => b.score - a.score);
+            for (let i = 0; i < 10; i++) {
+                const student = sortedScores[i];
+                console.log(`${student.name} ${student.score}`);
+            }
+        }
+        else{
+            console.log("failed to fetch");
+        }
+      });
 
-                const schoolStudents = response.filter(student => student.school === schooltype);
-                
-                schoolStudents.sort((a,b) => b.point - a.point);
-                let content = "";
-                const limit = 10;
-
-                for(let i = 0; i < limit; i++){
-                    content += `
-                    <tr id = '${schoolStudents[i]._id}'>
-                    <td> ${schoolStudents[i].name} </td>
-                    <td> ${schoolStudents[i].point} </td>}`;
-                }
-
-                document.getElementById("leaderboard").innerHTML = content;
-            })
-            .catch((error) => console.error("Error fetching students: ",error));
-    }
-
-
+      document.getElementById("general-leaderboard").addEventListener("click", async function (e) {
+        e.preventDefault();
+        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': APIKEY // Your API key
+            },
+            });
+        if(response.ok){
+            const data = await response.json();
+            const sortedScores = data.sort((a,b) => b.generalScore - a.generalScore);
+            for (let i = 0; i < 10; i++) {
+                const student = sortedScores[i];
+                console.log(`${student.name} ${student.generalScore}`);
+            }
+        }
+        else{
+            console.log("failed to fetch");
+        }
+      });
 });
