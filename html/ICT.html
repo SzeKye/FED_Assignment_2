@@ -15,6 +15,7 @@
             .link-options{
                 left: -80.5vw;
             }
+            
         </style>      
     </head>
     <body>
@@ -24,7 +25,7 @@
 
                 <section class="student-total-points">
                     <img src="../images/XP-icon.png" alt="student points" height="50">
-                    <h1>(<span id="total-points"></span>)</h1> <!-- use js to get the total points of the students from the database -->
+                    <h1><span id="total-points"></span></h1> <!-- use js to get the total points of the students from the database -->
                 </section>
 
                 <section>
@@ -45,7 +46,7 @@
                                 <a href="Log-In.html">Log Out</a>
                         </section>
                     </section>
-                    <p>(<span id="name-of-student"></span>)</p> <!-- use js to get the name of the student and put it here -->
+                    <p><span id="name-of-student"></span></p> <!-- use js to get the name of the student and put it here -->
                 </section>
 
             </section>
@@ -71,12 +72,12 @@
                 <section class="more-options-ext">
                     <a href="#">Useful links</a>
                     <section class="link-options">
-                        <a href="#">Student Portal</a>
-                        <a href="#">Npal</a>
-                        <a href="#">PoliteMall</a>
-                        <a href="#">Connect Mail</a>
-                        <a href="#">Library</a>
-                        <a href="#">Whistleblowing</a>
+                        <a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a>
+                        <a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login" target="_blank">Npal</a>
+                        <a href="https://politemall.polite.edu.sg/" target="_blank">PoliteMall</a>
+                        <a href="https://www.np.edu.sg/login/full-time-students/connect-mail" target="_blank">Connect Mail</a>
+                        <a href="https://www.np.edu.sg/library" target="_blank">Library</a>
+                        <a href="https://www.np.edu.sg/about-np/contact/tell-np" target="_blank">Whistleblowing</a>
                     </section>
                 </section>
 
@@ -84,6 +85,25 @@
         </header>
         <section class="hero">
             <img src="../images/ICTBackground3.png" alt="ICT" height="300">
+        </section>
+
+        <section class="container">
+            <h1>A Learning Experience With That Something Xtra</h1>
+            <p>Learn. Practice. Play. Repeat.<br>Regardless of which school you come from, we welcome you to learn a thing or two about ICT</p>
+            <button id="practice-start" onclick="openGuide()">Practice</button>
+        </section>
+
+        <section class="guidelines-ext">
+            <section class="guidelines-int">
+                <h2>Guidelines</h2>
+                <ol>
+                    <li>There wiil be 10 MCQ questions, each correct answer gets you 10 XP.</li>
+                </ol>
+                <section class="btn-group">
+                    <button class="guideline-btn" id="exit-btn" onclick="closeGuide()">Exit</button>
+                    <a href="#" class="guideline-btn begin-btn" id="it-school">Begin</a>
+                </section>
+            </section> 
         </section>
 
         <section class="container mt-5">
@@ -99,10 +119,41 @@
                 <tbody></tbody>
             </table>
         </section>
-
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-        <footer>
-
+        <script>
+            function openGuide(){
+                const guide = document.querySelector(".guidelines-ext");
+                guide.classList.add("active");
+            }
+            function closeGuide(){
+                const guide = document.querySelector(".guidelines-ext")
+                guide.classList.remove("active");
+            }         
+        </script>
+        <footer role="contentinfo" class="footer-ext">
+            <p>Don't miss out on the fun!</p>
+            <section id="socials" class="row">
+                <section class="links">
+                    <a href="https://tiktok.com/@ngeeannpoly" target="_blank"><img src="../images/tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.instagram.com/ngeeannpoly/" target="_blank"><img src="../images/Instagram.png" alt="Instagram"></a>
+                    <a href="https://www.youtube.com/user/NgeeAnnPolytechnic" target="_blank"><img src="../images/Youtube.png" alt="YouTube"></a>
+                    <a href="https://www.facebook.com/ngeeannpoly" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
+                    <a href="https://sg.linkedin.com/school/ngee-ann-polytechnic/" target="_blank"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+                    <a href="https://t.me/ngeeannpoly" target="_blank"><img src="../images/telegram.png" alt="Telegram"></a>
+                </section>    
+            </section>
+            <hr>
+            <section class="row">
+                <ul class="links">
+                    <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
+                    <li><a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login&languageCd=ENG&" target="_blank">Npal</a></li>
+                    <li><a href="https://nplms.polite.edu.sg/d2l/home">PoliteMall</a></li>
+                    <li><a href="https://outlook.office365.com/mail/" target="_blank">Connect Mail</a></li>
+                    <li><a href="https://www.np.edu.sg/library" target="_blank">Library</a></li>
+                    <li><a href="https://www.np.edu.sg/about-np/contact/tell-np/whistle-blowing-for-students" target="_blank">Whistleblowing</a></li>
+                </ul>
+            </section>
+                
         </footer>
     </body>
 </html>
