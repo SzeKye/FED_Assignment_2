@@ -20,41 +20,41 @@
     </head>
     <body>
         <header>
-            <section class="nav-bar">
+            <div class="nav-bar">
                 <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
 
-                <section class="student-total-points">
+                <div class="student-total-points">
                     <img src="../images/XP-icon.png" alt="student points" height="50">
                     <h1><span id="total-points"></span></h1> <!-- use js to get the total points of the students from the database -->
-                </section>
+                </div>
 
-                <section>
+                <div>
                     <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
-                </section>
+                </div>
 
-                <section id="profile-section">
-                    <section class="more-options-ext">
+                <div id="profile-section">
+                    <div class="more-options-ext">
                         <img src="../images/profile.png" alt="Porfile icon" width="50">
                         
-                        <section class="more-options">
-                                <a href="#">Edit Profile</a>
-                                <a href="#">History</a>
-                                <a href="#">Account Settings</a>
-                                <hr style="border: 1px dashed #C7C7C7;">
-                                <a href="#">English (United Kingdom)</a>
-                                <hr style="border: 1px dashed #C7C7C7;">
-                                <a href="Log-In.html">Log Out</a>
-                        </section>
-                    </section>
+                        <div class="more-options">
+                            <a href="#">Edit Profile</a>
+                            <a href="#">History</a>
+                            <a href="#">Account Settings</a>
+                            <hr style="border: 1px dashed #C7C7C7;">
+                            <a href="#">English (United Kingdom)</a>
+                            <hr style="border: 1px dashed #C7C7C7;">
+                            <a href="Log-In.html">Log Out</a>
+                        </div>
+                    </div>
                     <p><span id="name-of-student"></span></p> <!-- use js to get the name of the student and put it here -->
-                </section>
+                </div>
 
-            </section>
+            </div>
 
-            <section class="lower-nav-bar">
-                <section class="more-options-ext">
+            <div class="lower-nav-bar">
+                <div class="more-options-ext">
                     <a href="#">Schools</a>
-                    <section class="school-options">
+                    <div class="school-options">
                         <a href="B&A.html">Business & Accountancy</a>
                         <a href="#">Design & Environment</a>
                         <a href="#">Engineering</a>
@@ -64,47 +64,59 @@
                         <a href="ICT.html">InfoComm Technology</a>
                         <a href="#">Life Sciences & Chemical Technology</a>
                         <a href="#">Interdisciplinary Studies</a>
-                    </section>
-                </section>
+                    </div>
+                </div>
 
-                <a href="#">Shop</a>
+                <a href="../html/Redemption.html">Shop</a>
 
-                <section class="more-options-ext">
+                <div class="more-options-ext">
                     <a href="#">Useful links</a>
-                    <section class="link-options">
+                    <div class="link-options">
                         <a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a>
                         <a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login" target="_blank">Npal</a>
                         <a href="https://politemall.polite.edu.sg/" target="_blank">PoliteMall</a>
                         <a href="https://www.np.edu.sg/login/full-time-students/connect-mail" target="_blank">Connect Mail</a>
                         <a href="https://www.np.edu.sg/library" target="_blank">Library</a>
                         <a href="https://www.np.edu.sg/about-np/contact/tell-np" target="_blank">Whistleblowing</a>
-                    </section>
-                </section>
+                    </div>
+                </div>
 
-            </section>
+            </div>
         </header>
-        <section class="hero">
+        <div class="hero">
             <img src="../images/ICTBackground3.png" alt="ICT" height="300">
-        </section>
+        </div>
 
         <section class="container">
             <h1>A Learning Experience With That Something Xtra</h1>
             <p>Learn. Practice. Play. Repeat.<br>Regardless of which school you come from, we welcome you to learn a thing or two about ICT</p>
-            <button id="practice-start" onclick="openGuide()">Practice</button>
+            <button id="practice-start" data-bs-toggle="modal" data-bs-target="#modal">Practice</button>
         </section>
 
-        <section class="guidelines-ext">
-            <section class="guidelines-int">
-                <h2>Guidelines</h2>
-                <ol>
-                    <li>There wiil be 10 MCQ questions, each correct answer gets you 10 XP.</li>
-                </ol>
-                <section class="btn-group">
-                    <button class="guideline-btn" id="exit-btn" onclick="closeGuide()">Exit</button>
-                    <a href="#" class="guideline-btn begin-btn" id="it-school">Begin</a>
-                </section>
-            </section> 
-        </section>
+        <div class="modal fade" id="modal">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <section class="modal-header">
+                        <h2>Guidelines</h2>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </section>
+    
+                    <div class="modal-body">
+                        <ol>
+                            <li>There wiil be 10 MCQ questions, each correct answer gets you 10 XP.</li>
+                        </ol>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button class="guideline-btn" id="exit-btn" data-bs-dismiss="modal">Exit</button>
+                            <a href="#" class="guideline-btn begin-btn" id="general">Begin</a>
+                        </div>
+                    </div> 
+    
+                </div>        
+            </div> 
+        </div>
 
         <section class="container mt-5">
             <h2>ICT Leaderboard (<span id="total-contacts"></span>)</h2>
@@ -120,41 +132,34 @@
             </table>
         </section>
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-        <script>
-            function openGuide(){
-                const guide = document.querySelector(".guidelines-ext");
-                guide.classList.add("active");
-            }
-            function closeGuide(){
-                const guide = document.querySelector(".guidelines-ext")
-                guide.classList.remove("active");
-            }         
-        </script>
-        <footer role="contentinfo" class="footer-ext">
-            <p>Don't miss out on the fun!</p>
-            <section id="socials" class="row">
-                <section class="links">
-                    <a href="https://tiktok.com/@ngeeannpoly" target="_blank"><img src="../images/tiktok.png" alt="TikTok"></a>
-                    <a href="https://www.instagram.com/ngeeannpoly/" target="_blank"><img src="../images/Instagram.png" alt="Instagram"></a>
-                    <a href="https://www.youtube.com/user/NgeeAnnPolytechnic" target="_blank"><img src="../images/Youtube.png" alt="YouTube"></a>
-                    <a href="https://www.facebook.com/ngeeannpoly" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
-                    <a href="https://sg.linkedin.com/school/ngee-ann-polytechnic/" target="_blank"><img src="../images/linkedin.png" alt="LinkedIn"></a>
-                    <a href="https://t.me/ngeeannpoly" target="_blank"><img src="../images/telegram.png" alt="Telegram"></a>
-                </section>    
-            </section>
-            <hr>
-            <section class="row">
-                <ul class="links">
-                    <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
-                    <li><a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login&languageCd=ENG&" target="_blank">Npal</a></li>
-                    <li><a href="https://nplms.polite.edu.sg/d2l/home">PoliteMall</a></li>
-                    <li><a href="https://outlook.office365.com/mail/" target="_blank">Connect Mail</a></li>
-                    <li><a href="https://www.np.edu.sg/library" target="_blank">Library</a></li>
-                    <li><a href="https://www.np.edu.sg/about-np/contact/tell-np/whistle-blowing-for-students" target="_blank">Whistleblowing</a></li>
-                </ul>
-            </section>
-                
+        
+        <footer class="footer-ext">
+            <h5>Don't miss out on the fun!</h5>
+            <div class="footer-int">
+                <div id="socials" class="row">
+                    <div class="links">
+                        <a href="https://tiktok.com/@ngeeannpoly" target="_blank"><img src="../images/tiktok.png" alt="TikTok"></a>
+                        <a href="https://www.instagram.com/ngeeannpoly/" target="_blank"><img src="../images/Instagram.png" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/user/NgeeAnnPolytechnic" target="_blank"><img src="../images/Youtube.png" alt="YouTube"></a>
+                        <a href="https://www.facebook.com/ngeeannpoly" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
+                        <a href="https://sg.linkedin.com/school/ngee-ann-polytechnic/" target="_blank"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+                        <a href="https://t.me/ngeeannpoly" target="_blank"><img src="../images/telegram.png" alt="Telegram"></a>
+                    </div>    
+                </div>
+                <div class="row">
+                    <ul class="links">
+                        <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
+                        <li><a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login&languageCd=ENG&" target="_blank">Npal</a></li>
+                        <li><a href="https://nplms.polite.edu.sg/d2l/home">PoliteMall</a></li>
+                        <li><a href="https://outlook.office365.com/mail/" target="_blank">Connect Mail</a></li>
+                        <li><a href="https://www.np.edu.sg/library" target="_blank">Library</a></li>
+                        <li><a href="https://www.np.edu.sg/about-np/contact/tell-np/whistle-blowing-for-students" target="_blank">Whistleblowing</a></li>
+                    </ul>
+                </div>
+            </div>
         </footer>
+        <script src="/js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script src="../js.js"></script>
     </body>
 </html>
