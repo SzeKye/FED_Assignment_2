@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8">
         <title>Redemption</title>
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">        
@@ -14,80 +15,46 @@
             .link-options{
                 left: -80vw;
             }
-
-            .news_ext {
-                color: #000;
-                padding:40px;
-                margin-bottom: -40px;
-            }
-            .news_int{
-                flex-direction: row;
-                display: flex;
-            }
-
-            .main_news {
-                flex: 21%;
-                padding: 10px;
-                position: relative;
-            }
-
-            .main_title{
-                position: absolute;
-                left: 5%;
-                top: 60%;
-                width: 100%;
-            }
-            .secondary_news{
-                flex: 40%;
-                flex-direction: column;
-                padding: 10px;
-                
-            }
-            .secondary_news_article{
-                position: relative;
-                margin-bottom: 25px;
-            }
-            .news_title{
-                margin-top: -7em;
-                padding: 0 15px;
-                position: absolute;
-            }
         </style>
     </head>
     <body>
         <header>
-            <section class="nav-bar">
-                <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
-                <section class="student-total-points">
-                    <img src="../images/XP-icon.png" alt="student points" height="50">
-                    <h1>(<span id="total-points"></span>)</h1> <!-- use js to get the total points of the students from the database -->
-                </section>
-                <section>
-                    <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
-                </section>
-                <section id="profile-section">
-                    <section class="more-options-ext">
-                        <img src="../images/profile.png" alt="Portfolio icon" width="50">
-                        
-                        <section class="more-options">
-                                <a href="#">Edit Profile</a>
-                                <a href="#">History</a>
-                                <a href="#">Account Settings</a>
-                                <hr style="border: 1px dashed #C7C7C7;">
-                                <a href="#">English (United Kingdom)</a>
-                                <hr style="border: 1px dashed #C7C7C7;">
-                                <a href="Log-In.html">Log Out</a>
-                            </ul>
-                        </section>
-                    </section>
-                    <p>(<span id="name-of-student1"></span>)</p> <!-- use js to get the name of the student and put it here -->
-                </section>
+            <div class="nav-bar">
 
-            </section>
-            <section class="lower-nav-bar">
-                <section class="more-options-ext">
+                <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
+
+                <div class="student-total-points">
+                    <img src="../images/XP-icon.png" alt="student points" height="50">
+                    <h2><span id="total-points"></span></h2> <!-- use js to get the total points of the students from the database -->
+                </div>
+                
+                <div>
+                    <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
+                </div>
+
+                <div id="profile-section">
+                    <div class="more-options-ext">
+                        <img src="../images/profile.png" alt="Porfile icon" width="50">
+                        
+                        <div class="more-options">
+                            <a href="#">Edit Profile</a>
+                            <a href="#">History</a>
+                            <a href="#">Account Settings</a>
+                            <hr style="border: 1px dashed #C7C7C7;">
+                            <a href="#">English (United Kingdom)</a>
+                            <hr style="border: 1px dashed #C7C7C7;">
+                            <a href="Log-In.html">Log Out</a>
+                            <a href="quiz.html">wda</a>
+                        </div>
+                    </div>
+                    <p><span id="name-of-student"></span></p> <!-- use js to get the name of the student and put it here, also change it to class instead of id -->
+                </div>
+
+            </div>
+            <div class="lower-nav-bar">
+                <div class="more-options-ext">
                     <a href="#">Schools</a>
-                    <section class="school-options">
+                    <div class="school-options">
                         <a href="B&A.html">Business & Accountancy</a>
                         <a href="#">Design & Environment</a>
                         <a href="#">Engineering</a>
@@ -97,39 +64,40 @@
                         <a href="ICT.html">InfoComm Technology</a>
                         <a href="#">Life Sciences & Chemical Technology</a>
                         <a href="#">Interdisciplinary Studies</a>
-                    </section>
-                </section>
+                        
+                    </div>
+                </div>
                 <a href="Redemption.html">Shop</a>
-                <section class="more-options-ext">
+                <div class="more-options-ext">
                     <a href="#">Useful links</a>
-                    <section class="link-options">
-                        <a href="#">Student Portal</a>
-                        <a href="#">Npal</a>
-                        <a href="#">PoliteMall</a>
-                        <a href="#">Connect Mail</a>
-                        <a href="#">Library</a>
-                        <a href="#">Whistleblowing</a>
-                    </section>
-                </section>
-            </section>
+                    <div class="link-options">
+                        <a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a>
+                        <a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login" target="_blank">Npal</a>
+                        <a href="https://politemall.polite.edu.sg/" target="_blank">PoliteMall</a>
+                        <a href="https://www.np.edu.sg/login/full-time-students/connect-mail" target="_blank">Connect Mail</a>
+                        <a href="https://www.np.edu.sg/library" target="_blank">Library</a>
+                        <a href="https://www.np.edu.sg/about-np/contact/tell-np" target="_blank">Whistleblowing</a>
+                    </div>
+                </div>
+            </div>
         </header>
-        <section class="hero">
+        <div class="hero">
 			<img src="../images/shop3.jpeg" alt="Hero" height="500px" style="filter: brightness(80%);">
 		  	<section class="hero_txt">
 				<h1>Redemption</h1>
 				<p>Enjoy the fruits of your labour!</p>
 			</section>
-		</section>
+		</div>
         
         <section id="product-light">
             <h1>Product Spotlight</h1>
             <h2>You won't want to miss out</h2>
         </section>
         
-		<section class="shop_imgs">
-			<section class="shop fade">
-                <section class="shop-ext">
-                    <section class="shop_des">
+		<div class="shop_imgs">
+			<div class="shop fade">
+                <div class="shop-ext">
+                    <div class="shop_des">
                         <section class="shop_details">
                             <h3 style="text-transform: uppercase;">NP Unisex Drifit Tee - 60th Anniversary Limited Edition</h3>
                             <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -1em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
@@ -141,15 +109,15 @@
                             <a href="#">Get yours now!</a>     
                         </section>
                         
-                    </section>
+                    </div>
                     <img src="../images/shirt.png" alt="NP Shop" style="height: 50vh;">
     
-                </section>
-			</section>
+                </div>
+			</div>
 
-			<section class="shop fade">
-                <section class="shop-ext">
-                    <section class="shop_des">
+			<div class="shop fade">
+                <div class="shop-ext">
+                    <div class="shop_des">
                         <section class="shop_details">
                             <h3 style="text-transform: uppercase;">NP Unisex Drifit Black with Red Print</h3>
                             <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -1em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>    
@@ -162,14 +130,14 @@
                             <a href="#">Get yours now!</a>                   
                         </section>
                         
-                    </section>
+                    </div>
                     <img src="../images/shirt10.jpeg" alt="NP Shop" style="height: 50vh;">
-                </section>
-            </section>
+                </div>
+            </div>
 
-            <section class="shop fade">
-                <section class="shop-ext">
-                    <section class="shop_des">
+            <div class="shop fade">
+                <div class="shop-ext">
+                    <div class="shop_des">
                         <section class="shop_details">
                             <h3 style="text-transform: uppercase;">NP Unisex Black/Gold Drifit T-Shirt</h3>
                             <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -1em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
@@ -182,13 +150,13 @@
                             <a href="#">Get yours now!</a>                   
                         </section>
     
-                    </section>
+                    </div>
                     <img src="../images/shirt7.jpeg" alt="NP Shop" style="height: 50vh;">    
-                </section>
-            </section>
+                </div>
+            </div>
 
-            <section class="shop fade">
-				<section class="shop_des">
+            <div class="shop fade">
+				<div class="shop_des">
 					<section class="shop_details">
 						<h3 style="text-transform: uppercase;">NP Unisex White/Black Drifit Fit T-Shirt</h3>
                         <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -1em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
@@ -201,12 +169,12 @@
                         <a href="#">Get yours now!</a>                   
 					</section>
 					
-				</section>
+				</div>
 				<img src="../images/shirt2.jpg" alt="NP Shop" style="height: 50vh;">
-			</section>
+			</div>
 
-			<section class="shop fade">
-				<section class="shop_des">
+			<div class="shop fade">
+				<div class="shop_des">
 					<section class="shop_details">
 						<h3 style="text-transform: uppercase;">NP Unisex Cotton Tees - Misty Range in 3 Colours - Maroon, Navy & Heather Grey</h3>
                         <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -1em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>   
@@ -219,23 +187,23 @@
                         <a href="#">Get yours now!</a>                   
 					</section>
 					
-				</section>
+				</div>
 				<img src="../images/shirt14.jpeg" alt="NP Shop" style="height: 50vh;">
-			</section>
+			</div>
 			<!-- <a class="left" onclick="changeImg(-1)"><p>‹</p></a>
 			<a class="right separator" onclick="changeImg(1)"><p>›</p></a> -->
-		</section> 
+		</div> 
 
-		<section class="nav_bullet_section">
-			<section class="nav_bullet" onclick="currentImg(0)"></section> 
-			<section class="nav_bullet" onclick="currentImg(1)"></section> 
-			<section class="nav_bullet" onclick="currentImg(2)"></section> 
-			<section class="nav_bullet" onclick="currentImg(3)"></section> 
-			<section class="nav_bullet" onclick="currentImg(4)"></section> 
-		</section>
+		<div class="nav_bullet_section">
+			<div class="nav_bullet" onclick="currentImg(0)"></div> 
+			<div class="nav_bullet" onclick="currentImg(1)"></div> 
+			<div class="nav_bullet" onclick="currentImg(2)"></div> 
+			<div class="nav_bullet" onclick="currentImg(3)"></div> 
+			<div class="nav_bullet" onclick="currentImg(4)"></div> 
+		</div>
 
 
-        <section>
+        <div>
 			<nav id="product-nav-padding">
 				<ul id="product-types">
 					<li><a href="#" target="_self"><b>Garments</b></a></li>
@@ -244,32 +212,57 @@
 					<li><a href="#" target="_self"><span style="color: #666666;">Coming Soon</span></a></li>
 				</ul>
 			</nav>
-		</section>
+		</div>
 
-        <section class="item-layout">
-            <section class="item-thumbnail">
-                <section class="item-image">
+        <div class="item-layout">
+            <div class="item-thumbnail">
+                <div class="item-image">
                     <img src="../images/shirt1.jpg" alt="shirt1">
-                </section>
+                </div>
                 <section class="item-des">
                     <h4>Ngee Ann Polytechnic Unisex Black Mottled Drifit T-shirt</h4>
                 </section>
-            </section>
-            <section class="item-thumbnail">
-                <section class="item-image">
+            </div>
+            <div class="item-thumbnail">
+                <div class="item-image">
                     <img src="../images/shirt2.jpg" alt="shirt2">
-                </section>
-                <section class="item-des"></section>
-            </section>
-            <section class="item-thumbnail">
-                <section class="item-image">
+                </div>
+                <div class="item-des"></div>
+            </div>
+            <div class="item-thumbnail">
+                <div class="item-image">
                     <img src="../images/shirt4.jpeg" alt="shirt4">
-                </section>
-                <section class="item-des"></section>
-            </section>
-        </section>
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+                </div>
+                <div class="item-des"></div>
+            </div>
+        </div>
 
+        
+        <footer class="footer-ext">
+            <h5>Don't miss out on the fun!</h5>
+            <div class="footer-int">
+                <div id="socials" class="row">
+                    <div class="links">
+                        <a href="https://tiktok.com/@ngeeannpoly" target="_blank"><img src="../images/tiktok.png" alt="TikTok"></a>
+                        <a href="https://www.instagram.com/ngeeannpoly/" target="_blank"><img src="../images/Instagram.png" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/user/NgeeAnnPolytechnic" target="_blank"><img src="../images/Youtube.png" alt="YouTube"></a>
+                        <a href="https://www.facebook.com/ngeeannpoly" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
+                        <a href="https://sg.linkedin.com/school/ngee-ann-polytechnic/" target="_blank"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+                        <a href="https://t.me/ngeeannpoly" target="_blank"><img src="../images/telegram.png" alt="Telegram"></a>
+                    </div>    
+                </div>
+                <div class="row">
+                    <ul class="links">
+                        <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
+                        <li><a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login&languageCd=ENG&" target="_blank">Npal</a></li>
+                        <li><a href="https://nplms.polite.edu.sg/d2l/home">PoliteMall</a></li>
+                        <li><a href="https://outlook.office365.com/mail/" target="_blank">Connect Mail</a></li>
+                        <li><a href="https://www.np.edu.sg/library" target="_blank">Library</a></li>
+                        <li><a href="https://www.np.edu.sg/about-np/contact/tell-np/whistle-blowing-for-students" target="_blank">Whistleblowing</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
         <script>
             // displays the games under games.html
             var img_number = 0; //first element in arrays have an index of 0
@@ -299,37 +292,15 @@
                 imgs_array[i].style.display = "none";  
             }
             for (i = 0; i < nav_bullet_array.length; i++) {
-                nav_bullet_array[i].className = nav_bullet_array[i].className.replace("show", ""); //removes any classes called show from all elements in the nav_bullet_array
+                nav_bullet_array[i].className = nav_bullet_array[i].className.replace("shows", ""); //removes any classes called show from all elements in the nav_bullet_array
             }
             imgs_array[img_number].style.display = "flex";  //shows the image 
-            nav_bullet_array[img_number].className += " show"; //sets the respective bullet of the img to show 
+            nav_bullet_array[img_number].className += " shows"; //sets the respective bullet of the img to show 
             }
         </script>
-        <footer role="contentinfo" class="footer-ext">
-            <p>Don't miss out on the fun!</p>
-            <section id="socials" class="row">
-                <section class="links">
-                    <a href="https://tiktok.com/@ngeeannpoly" target="_blank"><img src="../images/tiktok.png" alt="TikTok"></a>
-                    <a href="https://www.instagram.com/ngeeannpoly/" target="_blank"><img src="../images/Instagram.png" alt="Instagram"></a>
-                    <a href="https://www.youtube.com/user/NgeeAnnPolytechnic" target="_blank"><img src="../images/Youtube.png" alt="YouTube"></a>
-                    <a href="https://www.facebook.com/ngeeannpoly" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
-                    <a href="https://sg.linkedin.com/school/ngee-ann-polytechnic/" target="_blank"><img src="../images/linkedin.png" alt="LinkedIn"></a>
-                    <a href="https://t.me/ngeeannpoly" target="_blank"><img src="../images/telegram.png" alt="Telegram"></a>
-                </section>    
-            </section>
-            <hr>
-            <section class="row">
-                <ul class="links">
-                    <li><a href="https://portal.np.edu.sg/Pages/StudentHome.aspx" target="_blank">Student Portal</a></li>
-                    <li><a href="https://npalstudent.np.edu.sg/psp/student/?cmd=login&languageCd=ENG&" target="_blank">Npal</a></li>
-                    <li><a href="https://nplms.polite.edu.sg/d2l/home">PoliteMall</a></li>
-                    <li><a href="https://outlook.office365.com/mail/" target="_blank">Connect Mail</a></li>
-                    <li><a href="https://www.np.edu.sg/library" target="_blank">Library</a></li>
-                    <li><a href="https://www.np.edu.sg/about-np/contact/tell-np/whistle-blowing-for-students" target="_blank">Whistleblowing</a></li>
-                </ul>
-            </section>
-                
-        </footer>
+        <script src="/js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script src="../js.js"></script>
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     </body>
 </html>
