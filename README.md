@@ -20,3 +20,6 @@ which will be clear every month.
 Top 10 highest will get points based on their ranking, all 
 other will get participation points(lesser) and the point 
 can be used to redeem our NP T-Shirt.
+
+## Credits
+Storyset. (2020, October 29). Company. https://storyset.com/people    
