@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Quiz</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../css/style.css"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +14,23 @@
 </head>
 
 <body>
+	<div class="lottie-bg" id="lottie_bg">
+		<dotlottie-player src="https://lottie.host/36cfbdfa-84ad-4fdc-bbb8-6d2a20304281/jB9ybGaDTR.json" background="transparent" speed="1" style="left: 0; right: 0; position: absolute;" direction="1" playMode="normal" autoplay></dotlottie-player>
+	</div>
+
 	<section class="panel">
-		<h1>Quiz Application Using JavaScript</h1>
-		<section class="question" id="ques"></section>
-		<section class="options" id="option"></section>
-		<button onclick="checkAns()" id="btn">SUBMIT</button>
-		<section id="score"></section>
+		<section class="panel-int">			
+			<h1>Quiz Application Using JavaScript</h1>
+			<div class="question" id="ques"></div>
+			<div class="options" id="option"></div>
+			<button onclick="checkAns()" id="btn">Next</button>
+			<div id="score"></div>
+		</section>
 		
 	</section>
+	
     <script src="../quiz data.js"></script>
+	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </body>
 
 </html>
