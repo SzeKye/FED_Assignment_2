@@ -132,7 +132,7 @@ const itQuizData = [
         ques.innerHTML = `<h5 style='color: red'>
         ${error}</h5>`;
     }
-}
+  }
 
 //This function is used to shuffle the option in the generalQuizData to avoid answer always be at the last option
 function shuffleGeneralOption(quizOption) {
@@ -156,21 +156,44 @@ function shuffleGeneralOption(quizOption) {
     let currentQuestion = quizData[currentQuestionIndex];
     let currentQuestionText = currentQuestion.question;
     let currentQuestionOption = currentQuestion.options;
-    ques.innerHTML = currentQuestionText;
+    ques.innerHTML = currentQuestionIndex+1 + ". "+ currentQuestionText;
     
     currentQuestionOption.forEach(option => {
+      const optiondiv = document.createElement("div");  //created a div so no need for the <br> tag to send each option to a new line
       const radioInput = document.createElement("input");
       radioInput.type = "radio";
       radioInput.name = "answer";
       radioInput.value = option;
+      radioInput.id = option;
 
       const optionLabel = document.createElement("label");
-        optionLabel.textContent = option;
+      optionLabel.textContent = option;
+      optionLabel.htmlFor = option;
 
-        questionOption.appendChild(radioInput);
-        questionOption.appendChild(optionLabel);
-        questionOption.appendChild(document.createElement("br"));
-    })
+      optionLabel.style.padding = "1em 30px";
+      optionLabel.style.width = "100%";
+      
+      optiondiv.style.font = "500 18px Poppins, sans-serif"
+      optiondiv.style.border = "1px solid #CCCCCC";
+      optiondiv.style.display = "flex";
+      optiondiv.style.paddingLeft = "10px";
+      optiondiv.style.borderRadius = "5px";
+      optiondiv.style.marginBottom = "10px";
+      optiondiv.style.boxShadow = "0 2px 4px rgba(0,0,0,0.2);"
+
+      optiondiv.addEventListener("mouseover", ()=> {
+        optiondiv.style.backgroundColor = "#F2F2F2";
+      });
+      optiondiv.addEventListener("mouseout", ()=> {
+        optiondiv.style.backgroundColor = "transparent";
+      });
+      
+
+      optiondiv.appendChild(radioInput);
+      optiondiv.appendChild(optionLabel);
+      questionOption.appendChild(optiondiv)
+      // questionOption.appendChild(document.createElement("br"));
+    });
   }
 
   function loadScore(){
@@ -186,7 +209,7 @@ function shuffleGeneralOption(quizOption) {
       currentUser.point += score * 5;
     }
     console.log(currentUser.point)
-    totalScore.textContent = `Your score is ${score}`;
+    totalScore.textContent = `Your score is ${score} out of ${quizData.length}`;
     
     
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -222,7 +245,7 @@ function shuffleGeneralOption(quizOption) {
 
     } 
     nextQues(currentQuiz);
-}
+  }
 
 document.addEventListener("DOMContentLoaded", async function () {
 

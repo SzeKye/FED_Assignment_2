@@ -28,16 +28,22 @@ ul{
 #logo-position{
     margin-right: 43vw;
 }
-.student-total-points{
+.student-total-points {
     display: flex;
     align-items: center;
 }
+#total-points, #name-of-student1 {
+    font: 500 18px "Poppins", sans-serif;
+}
+
 #profile-section{
     display: flex;
+    align-items: center;
 }
 #profile-section p{
     margin-top: 1em;
 }
+
 .lower-nav-bar{
     display: flex;
     background-color: #003C77;
@@ -113,11 +119,13 @@ ul{
 .hero-txt{
     position: absolute;
     left: 10vw;
-    bottom: 0px;
+    bottom: 20px;
+}
+.hero .hero-txt h2 {
     font-family: "Poppins", sans-serif;
-    font-size: 28px;
+    font-size: 30px;
     color: #FFF;
-    font-weight: 500;
+    font-weight: 600;
 }
 .footer-ext{
     background-color: #000;
@@ -158,19 +166,15 @@ ul{
     padding: 1em 0;
 }
 
-/* .link-top {
-    padding-bottom: 1em;
+.home-container {
+    padding-left: 10vw;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
-
-.link-bottom {
-    padding-bottom: 4em;
-    padding-top: 1em;
-} */
 
 #school-map{
     display: flex;
     justify-content: center;
-    
 }
 /* Log In. html*/
 #login-submit, #sign-up-submit{
@@ -183,13 +187,34 @@ ul{
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.1);
+}
+#login-submit:hover, #sign-up-submit:hover {
+    background-color: #00284f;
 }
 
+.log-in-bg, .sign-up-bg {
+    position: fixed;
+    z-index: -1;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    filter: brightness(50%);
+}
 #log-in-container, #sign-up-container{
     display: flex;
     justify-content: space-evenly;
     width: 80%;
     margin: auto;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    box-shadow: rgba(0,0,0,0.5);
+    opacity: 0.95;
 }
 
 #welcome{
@@ -202,6 +227,10 @@ ul{
     display: inline-flex;
     width: 40%;
 }
+.security {
+    padding-top: 1rem;
+}
+
 #form{
     width: 100%;
 }
@@ -438,6 +467,7 @@ input:focus{
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
+    transition: 0.5s;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
@@ -468,7 +498,7 @@ input:focus{
     box-shadow: rgba(0,0,0,0.2);
 }
 /* quiz.html */
-.lottie-bg, .log-in-bg, .sign-up-bg {
+.lottie-bg {
     /* display: none; */
     position: absolute;
     z-index: -1;
@@ -495,8 +525,28 @@ input:focus{
 .question {
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 1em;
 }
 
-.options input{
-    border: 2px solid rgba(0,0,0,0.2);
+.panel .panel-int #btn, .panel .panel-int #back-btn {
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    background-color: transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: 0.5s;
+}
+
+.panel .panel-int #back-btn:hover {
+    background-color: #000;
+    color: #FFF;
+}
+.panel .panel-int #btn:hover {
+    background-color: #FFF;
+    color: #000;
 }
