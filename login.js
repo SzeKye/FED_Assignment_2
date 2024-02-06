@@ -1,7 +1,7 @@
 var currentUser;
 
 document.addEventListener("DOMContentLoaded",function(){
-    const APIKEY = "65ae017a083aceac0b9cf117"
+    const APIKEY = "65c2573e71a488dc268b0930"
     
 
     document.getElementById("login-submit").addEventListener("click",async function (e){
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
             };
             // Fetch user record from restdb based on email
-            const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student?q={"studentEmail":"${studentEmail}"}`,settings)
+            const response = await fetch(`https://fedtest-b042.restdb.io/rest/student?q={"studentEmail":"${studentEmail}"}`,settings)
             const userData = await response.json();
     
             if (userData.length > 0 && userData[0].password === studentPassword) {
