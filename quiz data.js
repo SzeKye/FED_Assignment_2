@@ -209,7 +209,7 @@ function shuffleGeneralOption(quizOption) {
       currentUser.point += score * 5;
     }
     console.log(currentUser.point)
-    totalScore.textContent = `Your score is ${score} out of ${quizData.length}`;
+    totalScore.textContent = `Your score is ${score} out of ${currentQuiz.length}`;
     
     
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }else{
       loadQuiz(generalQuizData);
       currentQuiz = generalQuizData;
-      check = true;
+      check = true; 
     }
       
   });

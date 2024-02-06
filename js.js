@@ -88,18 +88,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(student)
                 });
-            }
-            
-            
+            }  
         }
-        
-        
+
         async function checkDate(){
             const currentDate = new Date();
             const currentHour = currentDate.getHours();
             const currentMin = currentDate.getMinutes();
-            console.log(currentHour,currentMin)
-            if(currentHour === 21){
+            if(currentHour === 0 && currentMin === 0){
                 await resetScoreTryUpdatePoint();
             }
         }
@@ -137,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("it-school").addEventListener("click",async function(e){
         e.preventDefault();
+        console.log("clicked");
         if((currentUser.school === "Information Technology" || currentUser.school === undefined) && (currentUser.quiztry < 1 || currentUser.quiztry === undefined)){
             
             currentUser.school = "Information Technology";
@@ -162,80 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    document.getElementById("general").addEventListener("click",async function(e){
+    document.getElementById("generalQuiz").addEventListener("click",function(e){
         e.preventDefault();
-        document.dispatchEvent(new Event("generalQuiz"));
+        console.log("wasdwasd");
         window.location.href = "quiz.html";
     })
-
-    document.getElementById("it-leaderboard").addEventListener("click", async function (e) {
-        e.preventDefault();
-        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-apikey': APIKEY // Your API key
-            },
-            });
-        if(response.ok){
-            const data = await response.json();
-            const itStudent = data.filter(student => student.school === "Information Technology");
-            const sortedScores = itStudent.sort((a,b) => b.score - a.score);
-            for (let i = 0; i < 10; i++) {
-                const student = sortedScores[i];
-                console.log(`${student.name} ${student.score}`);
-            }
-        }
-        else{
-            console.log("failed to fetch");
-        }
-      });
-
-      document.getElementById("business-leaderboard").addEventListener("click", async function (e) {
-        e.preventDefault();
-        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-apikey': APIKEY // Your API key
-            },
-            });
-        if(response.ok){
-            const data = await response.json();
-            const businessStudent = data.filter(student => student.school === "Business");
-            const sortedScores = businessStudent.sort((a,b) => b.score - a.score);
-            for (let i = 0; i < 10; i++) {
-                const student = sortedScores[i];
-                console.log(`${student.name} ${student.score}`);
-            }
-        }
-        else{
-            console.log("failed to fetch");
-        }
-      });
-
-      document.getElementById("general-leaderboard").addEventListener("click", async function (e) {
-        e.preventDefault();
-        console.log("1234")
-        const response = await fetch(`https://fedassignment2-ba48.restdb.io/rest/student`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-apikey': APIKEY // Your API key
-            },
-            });
-        if(response.ok){
-            const data = await response.json();
-            const sortedScores = data.sort((a,b) => b.generalScore - a.generalScore);
-            for (let i = 0; i < 10; i++) {
-                const student = sortedScores[i];
-                console.log(`${student.name} ${student.generalScore}`);
-            }
-        }
-        else{
-            console.log("failed to fetch");
-        }
-      });
-      console.log(itLeaderboardStudent);
     });
 

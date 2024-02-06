@@ -42,7 +42,7 @@
                             <hr style="border: 1px dashed #C7C7C7;">
                             <a href="#">English (United Kingdom)</a>
                             <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="Log-In.html">Log Out</a>
+                            <a href="Log-In.html" id="log-out">Log Out</a>
                         </div>
                     </div>
                     <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here -->
@@ -98,7 +98,7 @@
     
                     <div class="modal-body">
                         <ol>
-                            <li>There wiil be 10 MCQ questions, each correct answer gets you 10 XP.</li>
+                            <li>There wiil be 10 MCQ questions, each correct answer gets you 5 points.</li>
                         </ol>
                     </div>
     
@@ -118,7 +118,6 @@
                 <thead>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Student ID</th>
                 <th>Score</th>                 
                 </thead>
                 <!-- This will be filled with information later -->
@@ -151,9 +150,10 @@
                     </ul>
                 </div>
             </div>
-        </footer>
-        <script src="/js/popper.min.js"></script>
+        </footer>   
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../leaderboard.js"></script>
         <script src="../js.js"></script>
+        
     </body>
 </html>
