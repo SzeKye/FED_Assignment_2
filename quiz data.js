@@ -123,11 +123,21 @@ const itQuizData = [
         ques.innerHTML = `<h5 style='color: red'>
         ${error}</h5>`;
     }
-}
+  }
 
+  function shuffleGeneralOption(quizOption) {
+    for (let i = quizOption.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); //This is to find random option to change with option[i]
+      [quizOption[i], quizOption[j]] = [quizOption[j], quizOption[i]]; //Switch the two option
+    }
+    return quizOption;
+  }
+  
   var currentUser = JSON.parse(localStorage.getItem('currentUser'));
   let currentQuestionIndex = 0;
   let score = 0;
+  var currentQuiz;
+  var check;
 
   function loadQuiz(quizData){
     const currentQuiz = quizData;
@@ -136,21 +146,44 @@ const itQuizData = [
     let currentQuestion = quizData[currentQuestionIndex];
     let currentQuestionText = currentQuestion.question;
     let currentQuestionOption = currentQuestion.options;
-    ques.innerHTML = currentQuestionText;
+    ques.innerHTML = currentQuestionIndex+1 + ". "+ currentQuestionText;
     
     currentQuestionOption.forEach(option => {
+      const optiondiv = document.createElement("div");  //created a div so no need for the <br> tag to send each option to a new line
       const radioInput = document.createElement("input");
       radioInput.type = "radio";
       radioInput.name = "answer";
       radioInput.value = option;
+      radioInput.id = option;
 
       const optionLabel = document.createElement("label");
-        optionLabel.textContent = option;
+      optionLabel.textContent = option;
+      optionLabel.htmlFor = option;
 
-        questionOption.appendChild(radioInput);
-        questionOption.appendChild(optionLabel);
-        questionOption.appendChild(document.createElement("br"));
-    })
+      optionLabel.style.padding = "1em 30px";
+      optionLabel.style.width = "100%";
+      
+      optiondiv.style.font = "500 18px Poppins, sans-serif"
+      optiondiv.style.border = "1px solid #CCCCCC";
+      optiondiv.style.display = "flex";
+      optiondiv.style.paddingLeft = "10px";
+      optiondiv.style.borderRadius = "5px";
+      optiondiv.style.marginBottom = "10px";
+      optiondiv.style.boxShadow = "0 2px 4px rgba(0,0,0,0.2);"
+
+      optiondiv.addEventListener("mouseover", ()=> {
+        optiondiv.style.backgroundColor = "#F2F2F2";
+      });
+      optiondiv.addEventListener("mouseout", ()=> {
+        optiondiv.style.backgroundColor = "transparent";
+      });
+      
+
+      optiondiv.appendChild(radioInput);
+      optiondiv.appendChild(optionLabel);
+      questionOption.appendChild(optiondiv)
+      // questionOption.appendChild(document.createElement("br"));
+    });
   }
 
   function loadScore(){
@@ -158,7 +191,7 @@ const itQuizData = [
 
     currentUser.score = score;
       currentUser.quiztry = 1;
-    totalScore.textContent = `Your score is ${score}`;
+    totalScore.textContent = `Your score is ${score} out of ${quizData.length}`;
     
     
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -198,7 +231,7 @@ const itQuizData = [
 
     } 
     nextQues(currentQuiz);
-}
+  }
 
 document.addEventListener("DOMContentLoaded", function() {
   // Check if the currentUser is in Business school
