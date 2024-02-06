@@ -1,4 +1,4 @@
-const APIKEY = "65ae017a083aceac0b9cf117"
+const APIKEY = "65c2573e71a488dc268b0930"
 const itQuizData = [
     {
       question: 'What does "HTML" stand for?',
@@ -116,7 +116,9 @@ const itQuizData = [
         console.log(data);
         const updatedData = data.results.map(result => {
           const unmixedOption = result.incorrect_answers.concat(result.correct_answer);
-          const mixedOption = shuffleGeneralOption(unmixedOption);
+          const decodedOptions = unmixedOption.map(option => decodeHTMLEntities(option));
+        
+          const mixedOption = shuffleGeneralOption(decodedOptions);
           return {
             question: result.question,
             options: mixedOption,
@@ -134,6 +136,12 @@ const itQuizData = [
     }
   }
 
+function decodeHTMLEntities(text) {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = text;
+  return textarea.value;
+}
+
 //This function is used to shuffle the option in the generalQuizData to avoid answer always be at the last option
 function shuffleGeneralOption(quizOption) {
   for (let i = quizOption.length - 1; i >= 0; i--) {
@@ -148,6 +156,7 @@ function shuffleGeneralOption(quizOption) {
   let score = 0;
   var currentQuiz;
   var check;
+  generalCheck = localStorage.getItem("generalCheck");
 
   function loadQuiz(quizData){
     currentQuiz = quizData;
@@ -198,7 +207,7 @@ function shuffleGeneralOption(quizOption) {
 
   function loadScore(){
     const totalScore = document.getElementById("score");
-    if(check){
+    if(check === true){
       currentUser.generalScore = score;
       currentUser.generalquiztry = 1;
       currentUser.point += score * 5;
@@ -210,10 +219,13 @@ function shuffleGeneralOption(quizOption) {
     }
     console.log(currentUser.point)
     totalScore.textContent = `Your score is ${score} out of ${currentQuiz.length}`;
+    setTimeout(function(){
+      window.location.href = "home.html";
+    },5000);
     
     
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
-    const updateResponse = fetch(`https://fedassignment2-ba48.restdb.io/rest/student/${currentUser._id}`, {
+    const updateResponse = fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -221,6 +233,8 @@ function shuffleGeneralOption(quizOption) {
         },
         body: JSON.stringify(currentUser)
     });
+
+
   }
 
   function nextQues(quizData){
@@ -250,23 +264,21 @@ function shuffleGeneralOption(quizOption) {
 document.addEventListener("DOMContentLoaded", async function () {
 
   await fetchQuestions();
-
-  if (currentUser && currentUser.school === "Business") {
+  if(generalCheck === "true"){
+    check = true;
+    loadQuiz(generalQuizData);
+    currentQuiz = generalQuizData;
+  }else{
+    if (currentUser && currentUser.school === "Business") {
       loadQuiz(businessQuizData);
       currentQuiz = businessQuizData;
   } else if (currentUser && currentUser.school === "Information Technology") {
       loadQuiz(itQuizData);
       currentQuiz = itQuizData;
   }
+  }
+  window.addEventListener("beforeunload",function(){
+    localStorage.setItem("generalCheck",false)
+  })
 
-  document.getElementById("generalQuiz").addEventListener("click", function () {
-    if(currentUser.generalquiztry === 1){
-      alert("Maximum try per day is reached!");
-    }else{
-      loadQuiz(generalQuizData);
-      currentQuiz = generalQuizData;
-      check = true; 
-    }
-      
-  });
 });

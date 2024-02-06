@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded",function(e){
     e.preventDefault();
-    const APIKEY = "65ae017a083aceac0b9cf117"
+    const APIKEY = "65c2573e71a488dc268b0930"
+    getStudent();
+
     function getStudent(limit = 10, all = true) {
 
         //[STEP 7]: Create our AJAX settings
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded",function(e){
         //[STEP 8]: Make our AJAX calls
         // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
         // RESTDb/NoSql always adds in a unique id for each data; we tap on it to have our data and place it into our links 
-        fetch("https://fedassignment2-ba48.restdb.io/rest/student", settings)
+        fetch("https://fedtest-b042.restdb.io/rest/student", settings)
           .then(response => response.json())
           .then(response => {
             const businessFilteredStudent = response.filter(response => response.school === "Business");
@@ -41,10 +43,10 @@ document.addEventListener("DOMContentLoaded",function(e){
             }
             if(window.location.pathname.endsWith("/ICT.html")){
                 updateLeaderboard(itFilteredStudent);
-            }else if(window.location.pathname.endsWith("/B%26A.html")){
+            }else if(window.location.pathname.endsWith("/BA.html")){
                 updateLeaderboard(businessFilteredStudent);
             }
           });
       }
-    getStudent();
+    
 })
