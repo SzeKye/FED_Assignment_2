@@ -22,4 +22,10 @@ other will get participation points(lesser) and the point
 can be used to redeem our NP T-Shirt.
 
 ## Credits
-Storyset. (2020, October 29). Company. https://storyset.com/people    
+- Storyset. (2020, October 29). Company. https://storyset.com/people    
+- Goodeisgn. (n.d.). LottieFiles. https://lottiefiles.com/animations/5-star-ratings-motion-AJtyNF0YFk
+- LottieFiles: Download Free lightweight animations for website & apps. (n.d.). LottieFiles. https://lottiefiles.com/animations/weather-icon-SN8KY29BK4
+- LottieFiles: Download Free lightweight animations for website & apps. (n.d.). LottieFiles. https://lottiefiles.com/animations/red-falling-confetti-sEvMQWNBbD
+- LottieFiles. (n.d.). LottieFiles: Download Free lightweight animations for website & apps. https://lottiefiles.com/
+- Homepage - Ngee Ann Polytechnic. (n.d.). https://nplms.polite.edu.sg/d2l/home
+- Ngee Ann Polytechnic (NP). (n.d.). Ngee Ann Polytechnic (NP). https://www.np.edu.sg/
