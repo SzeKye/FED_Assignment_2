@@ -182,7 +182,7 @@ function shuffleGeneralOption(quizOption) {
       optionLabel.style.padding = "1em 30px";
       optionLabel.style.width = "100%";
       
-      optiondiv.style.font = "500 18px Poppins, sans-serif"
+      optiondiv.style.font = "500 18px Poppins, sans-serif";
       optiondiv.style.border = "1px solid #CCCCCC";
       optiondiv.style.display = "flex";
       optiondiv.style.paddingLeft = "10px";

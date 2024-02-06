@@ -171,11 +171,24 @@ ul{
     padding-top: 2em;
     padding-bottom: 2em;
 }
-
-#school-map{
+.map-des {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
+
+.weatherAtNP {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 5em 0;
+}
+.school-map {
+    position: relative;
+}
+
 /* Log In. html*/
 #login-submit, #sign-up-submit{
     font-size: 15px;
@@ -443,12 +456,14 @@ input:focus{
 #practice-start{
     background-color: #003C77;
     color: #FFF;
-    align-items: center;
     border: 0;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 2vw;
     font-weight: 500;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+#practice-start:hover {
+    background-color: #00284f;
 }
 .btn-group {
     display: flex;

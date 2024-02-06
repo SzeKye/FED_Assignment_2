@@ -100,19 +100,49 @@
             <button id="it-leaderboard">123</button>
             <br> -->
             <h1>Another kind of Xtra</h1>
-            <p>Your learning is not confined the learning does not stop there either head over to our other schools<br>
-                to have a go at what they are learning!</p>
+            <p>
+                Introducing the first of its kind, NP has joined forces with the Ngee Ann Shop to create an innovative gamified website.<br>
+                Imagine racking up points for answering quizzes, participating in online discussions, and completing challenging<br>
+                tasks, all while scaling the ranks on a leaderboard visible to your peers. The accumulated points? They're not just<br>
+                bragging rights! Students can redeem them for their desired merchandise at the Ngee Ann Shop, fueling their academic<br>
+                journey with tangible rewards. This collaborative effort promises to spark a love for learning, ignite healthy competition,<br>
+                and motivate students to actively engage with their studies, making the educational experience truly rewarding and
+                <br>memorable. <br><br>
+                
+                P.S. Coming soon are exciting new ways to earn points and places to redeem them so stay tuned!
+            </p>
+            <div class="btn-group">
+                <a href="#generalknowledgequiz">General Knowledge Quiz</a>                
+            </div>
         </section>
-        <div id="school-map">
-            <img src="../images/NPMap.PNG" alt="NP Map">
-        </div>
-        <section class="home-container">
+        
+        <section class="weatherAtNP">
+            <h1>Weather @ NP</h1>
+            <h2>Providing weather forecast updates every 2 hours</h2>
+            <dotlottie-player src="https://lottie.host/a8f3d7d4-1af6-4ead-94c0-083b9ecb1106/ofogdrPfZl.json" background="transparent" speed="1" style="width: 300px; height: 300px; margin: -30px 0;" direction="1" playMode="normal" loop autoplay></dotlottie-player>
+            <h2>Current 2 hour forecast: <span id="two-hour-forecast"></span></h2>
+        </section>
+        <section class="map-des">
+            <h1>Schools</h1>
+            <p>Click on the dropdown pin of your school's block to navigate to your school's leaderboard and quiz</p>
+            <div class="school-map">
+                <img src="../images/NPMap.png" alt="NP Map" usemap="#np-map">
+                <map name="np-map">
+                    <area shape="poly" coords="455,242,465,239,475,243,480,254,477,267,464,282,456,274,449,264,448,252" href="#" alt="SOE" title="SOE" data="School of Engineering">
+                    <area shape="poly" coords="612,465,623,459,634,462,642,473,639,487,631,498,625,504,617,496,611,487,608,475" href="ICT.html" alt="ICT" title="ICT" data="School of Information Communication Technology">
+                    <area shape="poly" coords="349,724,361,729,367,741,360,758,349,769,341,762,333,749,333,734,339,727" href="B&A.html" alt="B&A" title="BA" data="School of Business & Accountancy">
+                    
+                </map>
+                
+            </div>
+        </section>
+        
+        <section class="home-container" id="generalknowledgequiz">
             <h1>General Knowledge</h1>
             <p>Forget the stress, time for a fun quiz! Can you answer these general knowledge questions without Googling?</p>
             <button id="practice-start" data-bs-toggle="modal" data-bs-target="#modal">Play</button>
-
-            
         </section>
+
         <div class="modal fade" id="modal">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
@@ -180,7 +210,56 @@
         <script src="/js/popper.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js.js"></script>
-        
+        <script>
+            let schoolPins = document.querySelectorAll("area");
+            const map = document.querySelector(".school-map");
+            schoolPins.forEach(area =>{
+                area.addEventListener("mouseover",function(e){
+                    const findTooltip = document.querySelector(".popup");
+                    if (findTooltip!= null) {
+                        findTooltip.remove();
+                    }
+                    e.preventDefault();
+                    const popup = document.createElement("div");
+                    popup.className = "popup";
+                    popup.innerHTML = `<h4>${area.title}</h4><p>${area.attributes.data.value}</p>`;
+                    popup.style.font = "500 16px Poppins, sans-serif";
+                    popup.style.color = "#FFF";
+                    popup.style.display = "block";
+                    popup.style.zIndex = "2";
+                    popup.style.padding = "10px";
+                    popup.style.borderRadius = "20px";
+                    popup.style.position = "absolute";
+                    popup.style.width = "150px";
+                    popup.style.textAlign = "center";
+                    popup.style.boxShadow = "2px 2px 2px rgba(0,0,0,0.5)";
+                    if (area.title == "SOE") {
+                        popup.style.top = "20%";
+                        popup.style.left = "40%";
+                        popup.style.backgroundColor = "rgba(0, 158, 193, 0.8)";
+                    }
+                    if (area.title == "ICT") {
+                        popup.style.top = "30%";
+                        popup.style.left = "55%";
+                        popup.style.backgroundColor = "rgba(108, 38, 140, 0.8)";
+                    }
+                    if (area.title == "BA") {
+                        popup.style.top = "50%";
+                        popup.style.left = "15%";
+                        popup.style.backgroundColor = "rgba(179, 10, 58, 0.8)";
+                    }
+                    map.append(popup);
+                    area.addEventListener("mouseout",function(e){
+                        e.preventDefault();
+                        const findTooltip = document.querySelector(".popup");
+                        findTooltip.remove();
+                    });
+                });
+                
+            });
+        </script>
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     </body>
 </html>
 
