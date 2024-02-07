@@ -56,13 +56,13 @@ document.addEventListener("DOMContentLoaded",function(e){
         
                 document.getElementById("total-contacts").innerHTML = count;
             }
-
+            console.log(window.location.pathname);
             // The below part check if the current page is BA,ICT or Home, then show respective leaderboard
             if(window.location.pathname.endsWith("/ICT.html")){
                 updateLeaderboard(itFilteredStudent);
             }else if(window.location.pathname.endsWith("/BA.html")){
                 updateLeaderboard(businessFilteredStudent);
-            }else if(window.location.pathname.endsWith("/Home.html")){
+            }else if(window.location.pathname.endsWith("/home.html")){
                 updateLeaderboard(generalStudent);
             }
           });
