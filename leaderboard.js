@@ -23,28 +23,46 @@ document.addEventListener("DOMContentLoaded",function(e){
           .then(response => {
             const businessFilteredStudent = response.filter(response => response.school === "Business");
             const itFilteredStudent = response.filter(response => response.school === "Information Technology")
+            const generalStudent = response;
+            let content = "";
+            var count = 0;
             function updateLeaderboard(studentList){
-                studentList.sort((a,b) => b.score - a.score);
-                let content = "";
-        
-                for (var i = 0; i < studentList.length && i < limit; i++) {
-                
-                content = `${content}<tr id='${studentList[i]._id}'><td>${studentList[i].name}</td>
-                <td>${studentList[i].studentEmail}</td>
-                <td>${studentList[i].score}</td>`
-                    
+                if(studentList === generalStudent){
+                  studentList.sort((a,b) => b.generalScore - a.generalScore);
+                  for (var i = 0; i < studentList.length && i < limit; i++) {
+                    if(studentList[i].generalScore !== 0){
+                      content = `${content}<tr id='${studentList[i]._id}'><td>${studentList[i].name}</td>
+                      <td>${studentList[i].studentEmail}</td>
+                      <td>${studentList[i].generalScore}</td>`
+                      count++;
+                    }
+                  }
+                }else if(studentList === itFilteredStudent || studentList === businessFilteredStudent){
+                  studentList.sort((a,b) => b.score - a.score);
+                  for (var i = 0; i < studentList.length && i < limit; i++) {
+                    if(studentList[i].score !== 0){
+                      content = `${content}<tr id='${studentList[i]._id}'><td>${studentList[i].name}</td>
+                      <td>${studentList[i].studentEmail}</td>
+                      <td>${studentList[i].score}</td>`
+                      count++;
+                    }
+                  }
                 }
-                
+
                 //[STEP 9]: Update our HTML content
                 // Let's dump the content into our table body
                 document.getElementById("contact-list").getElementsByTagName("tbody")[0].innerHTML = content;
         
-                document.getElementById("total-contacts").innerHTML = studentList.length;
+                document.getElementById("total-contacts").innerHTML = count;
             }
+            console.log(window.location.pathname);
             if(window.location.pathname.endsWith("/ICT.html")){
                 updateLeaderboard(itFilteredStudent);
             }else if(window.location.pathname.endsWith("/BA.html")){
                 updateLeaderboard(businessFilteredStudent);
+            }else if(window.location.pathname.endsWith("/Home.html")){
+                console.log("haha");
+                updateLeaderboard(generalStudent);
             }
           });
       }

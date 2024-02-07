@@ -46,11 +46,18 @@ const APIKEY = "65c2573e71a488dc268b0930"
         const student = await response.json();
         const updateLeaderboardPoint = async (leaderboardStudents) => {
             const filteredStudent = student.filter(student => student.school === leaderboardStudents);
+            const generalStudent = student;
+            const sortedGeneralStudent = generalStudent.sort((a,b) => b.generalScore - a.generalScore);
             const sortedStudent = filteredStudent.sort((a,b) => b.score - a.score);
             for(let i = 0; i < Math.min(sortedStudent.length, 10); i++){
                 if(sortedStudent[i].score !== 0){
                     sortedStudent[i].point += (200 - (i * 5));
-                }
+                }   
+            }
+            for(let i = 0; i < Math.min(sortedGeneralStudent.length, 10); i++){
+                if(sortedGeneralStudent[i].generalScore !== 0){
+                    sortedGeneralStudent[i].point += (200 - (i * 5));
+                }   
             }
             for(const student of sortedStudent){
                 const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${student._id}`, {
@@ -85,14 +92,17 @@ const APIKEY = "65c2573e71a488dc268b0930"
             },
             body: JSON.stringify(student)
             });
-        }  
+        } 
+        
+        localStorage.removeItem('currentUser'); //Auto log out the user after everything are resetted.
+  
     }
 
     async function checkDate(){
         const currentDate = new Date();
         const currentHour = currentDate.getHours();
         const currentMin = currentDate.getMinutes();
-        if(currentHour === 23){
+        if(currentHour === 0 && currentMin === 0){
             await resetScoreTryUpdatePoint();
         }
     }
