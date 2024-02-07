@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
             });
             document.getElementById("total-points").innerHTML = currentUser.point;
             alert("Redeem successfully! Please collect your shirt at the Convention Centre.");
+            
         } else {
             alert("Not enough points!");
         }
+        document.getElementById("exit-btn").click();
     });
 });
