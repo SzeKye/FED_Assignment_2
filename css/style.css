@@ -113,7 +113,7 @@ ul{
 }
 
 .hero img{
-    width: 90%;
+    
 }
 
 .hero-txt{
@@ -409,25 +409,38 @@ input:focus{
     text-decoration: none;
 }
 .item-layout{
-    display: flex;
-    width: 90%;
-    justify-content: center;
+    margin-bottom: 20px;
+}
+.item-layout a{
+    text-decoration: none;
+    color: #000;
 }
 .item-thumbnail{
-    display: flex;
-    flex-direction: column;
-}
-.item-image{
-    border:#000 1px solid;
-    
-}
-.item-image img{
-    height: 50vh;
-}
-.item-des{
-    border: #003C77 1px dashed;
+    padding: 10px;
 }
 
+.card-text p{
+    font: 400 16px "Poppins", sans-serif;
+}
+.redeem-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.5s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border: 1px solid #003C77;
+    color: #003C77;
+}
+.redeem-btn:hover {
+    background-color: #00284f;
+    color: #FFF;
+}
 
 /* Quiz popup */
 .guidelines-ext{
@@ -564,4 +577,39 @@ input:focus{
 .panel .panel-int #btn:hover {
     background-color: #FFF;
     color: #000;
+}
+
+.product-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10vh 0;
+}
+.product-picture {
+    margin-right: 100px;
+    flex-basis: 30%;
+}
+.product-info {
+    flex-basis: 30%;
+}
+
+.size-select {
+    margin: 20px 0;
+}
+.product-btn {
+    background-color: #003C77;
+    color: #FFF;
+    width: 100%;
+    text-align: center;
+    box-shadow: 1px 1px 1px rgba(1, 9, 114, 0.2);
+    border-radius: 5px;
+    margin: 15px 0;
+    padding: 10px 0;
+}
+.product-btn:hover {
+    background-color: #00284f;
+}
+.product-details {
+    padding-top: 10px;
 }
