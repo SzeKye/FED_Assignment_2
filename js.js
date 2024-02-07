@@ -120,6 +120,7 @@ async function resetScoreTryUpdatePoint(){
     
     localStorage.removeItem('currentUser'); //Auto log out the user after everything are resetted.
     currentUser = null; //set the currentUser to null 
+    window.location.href = "Log-In.html"; //Ask user to login after everyday reset to ensure data is all correct
 }
 
 /* The checkDate function is to get the current time and check if it is 00:00, if yes, call the resetScoreTryUpdatePoint function
