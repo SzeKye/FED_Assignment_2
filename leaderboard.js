@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded",function(e){
     e.preventDefault();
-    const APIKEY = "65c2573e71a488dc268b0930"
+    const APIKEY = "65c3602a4355fb3995c1b485"
     getStudent(); //call the getstudent function
 
     // This function get the top 10 student based on their score
-    function getStudent(limit = 10, all = true) {
+    function getStudent(limit = 10,generalLimit = 3, all = true) {
         let settings = {
           method: "GET", 
           headers: {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded",function(e){
           },
         }
 
-        fetch("https://fedtest-b042.restdb.io/rest/student", settings) //fetch all the student in restdb
+        fetch("https://fedassignment2-0612.restdb.io/rest/student", settings) //fetch all the student in restdb
           .then(response => response.json())
           .then(response => {
 
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded",function(e){
                 //This ifelse statement check if the studentList is general or the school student list
                 if(studentList === generalStudent){
                   studentList.sort((a,b) => b.generalScore - a.generalScore); //sort the student based on their generalscore
-                  for (var i = 0; i < studentList.length && i < limit; i++) {
+                  for (var i = 0; i < studentList.length && i < generalLimit; i++) {
                     if(studentList[i].generalScore !== 0){
                       //The below part add the content to the leaderboard based on the student information
                       content = `${content}<tr id='${studentList[i]._id}'><td>${studentList[i].name}</td>
@@ -48,15 +48,15 @@ document.addEventListener("DOMContentLoaded",function(e){
                       <td>${studentList[i].studentEmail}</td>
                       <td>${studentList[i].score}</td>`
                       count++;
+                      document.getElementById("total-contacts").innerHTML = count;
                     }
                   }
                 }
 
                 document.getElementById("contact-list").getElementsByTagName("tbody")[0].innerHTML = content;
         
-                document.getElementById("total-contacts").innerHTML = count;
+                
             }
-            console.log(window.location.pathname);
             // The below part check if the current page is BA,ICT or Home, then show respective leaderboard
             if(window.location.pathname.endsWith("/ICT.html")){
                 updateLeaderboard(itFilteredStudent);

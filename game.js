@@ -2,7 +2,7 @@ const playBoard = document.querySelector(".play-board");
 const scoreElement = document.querySelector(".current-score");
 const highScoreElement = document.querySelector(".high-score");
 const controls = document.querySelectorAll(".controls i");
-const APIKEY = "65c2573e71a488dc268b0930"
+const APIKEY = "65c3602a4355fb3995c1b485";
 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 let gameOver = false;
 let foodX, foodY;
@@ -27,10 +27,10 @@ const handleGameOver = async () => {
     clearInterval(setIntervalId);
     alert(`Game Over! Your score is ${score}`);
     currentUser.gameScore = score; 
-    currentUser.gameTry = 1; 
-    currentUser.point += gameScore * 5;
+    currentUser.gameTry += 1; 
+    currentUser.point += score * 5;
     localStorage.setItem('currentUser',JSON.stringify(currentUser));
-    const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
+    const updateResponse = await fetch(`https://fedassignment2-0612.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT', //update the currentUser information to restdb
         headers: {  
             'Content-Type': 'application/json',
@@ -40,6 +40,7 @@ const handleGameOver = async () => {
     });
     window.location.href = "home.html"; //Direct user back to home.html after the game finish
 }
+
 const changeDirection = e => {
     // This if else block is for them to change their direction and make sure they are unable to turn back
     if(e.key === "ArrowUp" && directionY != 1) {

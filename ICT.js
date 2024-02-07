@@ -10,7 +10,7 @@ document.getElementById("it-school").addEventListener("click",async function(e){
         
         currentUser.school = "Information Technology"; //Set the user school to IT in case their school is undefined
         localStorage.setItem('currentUser', JSON.stringify(currentUser)) //update the localstorage
-        const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
+        const updateResponse = await fetch(`https://fedassignment2-0612.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT', //Update the currentUser information to restdb
         headers: {
             'Content-Type': 'application/json',
