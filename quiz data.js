@@ -1,4 +1,6 @@
 const APIKEY = "65c2573e71a488dc268b0930"
+
+/* The below itQuizData and businessQuizData is the question for the school quiz */
 const itQuizData = [
     {
       question: 'What does "HTML" stand for?',
@@ -49,6 +51,56 @@ const itQuizData = [
       question: 'What is the purpose of the "AJAX" technology in web development?',
       options: ['To create animations', 'To handle asynchronous data requests', 'To design user interfaces', 'To manage authentication'],
       correctAnswer: 'To handle asynchronous data requests'
+    },
+    {
+      question: 'What does "DOM" stand for in web development?',
+      options: ['Document Object Model', 'Dynamic Object Manipulation', 'Data Object Management', 'Document Object Manipulation'],
+      correctAnswer: 'Document Object Model'
+    },
+    {
+      question: 'What is the purpose of the "SSH" protocol?',
+      options: ['To securely transfer files between computers', 'To access remote servers securely', 'To manage web hosting services', 'To encrypt web traffic'],
+      correctAnswer: 'To access remote servers securely'
+    },
+    {
+      question: 'What does "CMS" stand for in web development?',
+      options: ['Content Management System', 'Code Management System', 'Centralized Markup Syntax', 'Customer Management Software'],
+      correctAnswer: 'Content Management System'
+    },
+    {
+      question: 'Which JavaScript framework is known for its component-based architecture?',
+      options: ['Angular', 'React', 'Vue.js', 'Ember'],
+      correctAnswer: 'React'
+    },
+    {
+      question: 'What is the purpose of "CORS" in web development?',
+      options: ['To enhance website security', 'To manage cross-origin resource sharing', 'To optimize website performance', 'To encrypt web traffic'],
+      correctAnswer: 'To manage cross-origin resource sharing'
+    },
+    {
+      question: 'What is the purpose of "SQL injection"?',
+      options: ['To improve database performance', 'To enhance data encryption', 'To prevent data corruption', 'To exploit vulnerabilities in web applications'],
+      correctAnswer: 'To exploit vulnerabilities in web applications'
+    },
+    {
+      question: 'Which HTTP method is typically used for submitting form data?',
+      options: ['GET', 'POST', 'PUT', 'DELETE'],
+      correctAnswer: 'POST'
+    },
+    {
+      question: 'What does "SEO" stand for in the context of web development?',
+      options: ['Search Engine Optimization', 'Structured Extension Overview', 'Server Endpoint Operations', 'Secure Email Operations'],
+      correctAnswer: 'Search Engine Optimization'
+    },
+    {
+      question: 'Which type of storage is commonly used for client-side web storage?',
+      options: ['Relational database', 'NoSQL database', 'Session storage', 'Local storage'],
+      correctAnswer: 'Local storage'
+    },
+    {
+      question: 'What is the purpose of the "viewport" meta tag in HTML?',
+      options: ['To define the page layout', 'To specify the character encoding', 'To control the browser\'s viewport width and scaling', 'To include external CSS files'],
+      correctAnswer: 'To control the browser\'s viewport width and scaling'
     }
   ];
 
@@ -102,9 +154,62 @@ const itQuizData = [
       question: 'What does the term "Diversification" mean in business?',
       options: ['Expanding Product Line', 'Employee Training Programs', 'Budget Planning', 'Customer Service'],
       correctAnswer: 'Expanding Product Line'
+    },
+    {
+      question: 'What is a break-even point in business?',
+      options: ['The point where revenue exceeds expenses', 'The point where revenue equals expenses', 'The point where revenue is zero', 'The point where expenses exceed revenue'],
+      correctAnswer: 'The point where revenue equals expenses'
+    },
+    {
+      question: 'What is the purpose of a marketing mix?',
+      options: ['To set prices for products', 'To identify target markets', 'To determine advertising budgets', 'To develop a cohesive marketing strategy'],
+      correctAnswer: 'To develop a cohesive marketing strategy'
+    },
+    {
+      question: 'What does the term "ROI" stand for in business?',
+      options: ['Return on Investment', 'Risk of Inflation', 'Revenue on Interest', 'Rate of Inflation'],
+      correctAnswer: 'Return on Investment'
+    },
+    {
+      question: 'What is the main function of human resources (HR) in a company?',
+      options: ['To handle payroll', 'To manage employee benefits', 'To recruit and train employees', 'To oversee product development'],
+      correctAnswer: 'To recruit and train employees'
+    },
+    {
+      question: 'What is the purpose of a profit and loss (P&L) statement?',
+      options: ['To track revenue from sales', 'To assess company profitability', 'To calculate employee salaries', 'To record daily expenses'],
+      correctAnswer: 'To assess company profitability'
+    },
+    {
+      question: 'What is the primary goal of supply chain management?',
+      options: ['To maximize profits', 'To minimize production costs', 'To improve product quality', 'To optimize the flow of goods and services'],
+      correctAnswer: 'To optimize the flow of goods and services'
+    },
+    {
+      question: 'What is the purpose of market segmentation?',
+      options: ['To divide customers into groups based on demographics', 'To reduce competition in the market', 'To increase advertising costs', 'To standardize product offerings'],
+      correctAnswer: 'To divide customers into groups based on demographics'
+    },
+    {
+      question: 'What is the difference between a partnership and a corporation in business?',
+      options: ['Number of owners', 'Legal liability of owners', 'Taxation structure', 'Type of products sold'],
+      correctAnswer: 'Legal liability of owners'
+    },
+    {
+      question: 'What is the purpose of a business plan?',
+      options: ['To secure funding from investors', 'To outline business objectives and strategies', 'To manage daily operations', 'To evaluate employee performance'],
+      correctAnswer: 'To outline business objectives and strategies'
+    },
+    {
+      question: 'What is the role of market research in business?',
+      options: ['To develop advertising campaigns', 'To identify customer needs and preferences', 'To negotiate contracts with suppliers', 'To monitor employee performance'],
+      correctAnswer: 'To identify customer needs and preferences'
     }
   ];
-  generalQuizData = [];
+
+
+  generalQuizData = []; //Not set yet, will fetch from opendb api
+
   async function fetchQuestions() {
     try {
         const response = await fetch('https://opentdb.com/api.php?amount=20&category=9&type=multiple');
@@ -114,20 +219,21 @@ const itQuizData = [
         }
         const data = await response.json();
         console.log(data);
+
+        /* The below updatedData will add the question's incorrect_answer and correct_answer fetched from opendb together, store them to a new array */
         const updatedData = data.results.map(result => {
           const unmixedOption = result.incorrect_answers.concat(result.correct_answer);
-          const decodedOptions = unmixedOption.map(option => decodeHTMLEntities(option));
+          const decodedOptions = unmixedOption.map(option => decodeHTMLEntities(option)); //Call the decode function to decode some option
         
-          const mixedOption = shuffleGeneralOption(decodedOptions);
+          const mixedOption = shuffleGeneralOption(decodedOptions); //Shuffle the option as all the correct answer is at the last option
           return {
             question: result.question,
             options: mixedOption,
             correctAnswer: result.correct_answer
           }
-          
         })
-        generalQuizData = updatedData;
-        console.log(generalQuizData);
+
+        generalQuizData = updatedData; //store the updatedData to generalQuizData
     }
     catch (error) {
         console.log(error);
@@ -136,8 +242,9 @@ const itQuizData = [
     }
   }
 
+/* This function is to decode special letter like &%# */
 function decodeHTMLEntities(text) {
-  const textarea = document.createElement('textarea');
+  const textarea = document.createElement('textarea'); //make it to textarea so browser will auto decode it
   textarea.innerHTML = text;
   return textarea.value;
 }
@@ -151,13 +258,14 @@ function shuffleGeneralOption(quizOption) {
   return quizOption;
 }
 
-  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  var currentUser = JSON.parse(localStorage.getItem('currentUser')); //Get currentUser from localstorage
   let currentQuestionIndex = 0;
   let score = 0;
   var currentQuiz;
   var check;
-  generalCheck = localStorage.getItem("generalCheck");
+  generalCheck = localStorage.getItem("generalCheck"); //Get the localstorage generalCheck value for later part
 
+  /* The below function will load the quiz */
   function loadQuiz(quizData){
     currentQuiz = quizData;
     const questionOption = document.getElementById("option");
@@ -169,16 +277,16 @@ function shuffleGeneralOption(quizOption) {
     
     currentQuestionOption.forEach(option => {
       const optiondiv = document.createElement("div");  //created a div so no need for the <br> tag to send each option to a new line
-      const radioInput = document.createElement("input");
-      radioInput.type = "radio";
-      radioInput.name = "answer";
+      const radioInput = document.createElement("input"); //create a element input
+      radioInput.type = "radio"; //Make radioInput type to radio so they can only select 1 option
+      radioInput.name = "answer"; //Name them the same so they will be grouped together
       radioInput.value = option;
       radioInput.id = option;
 
-      const optionLabel = document.createElement("label");
+      const optionLabel = document.createElement("label"); //This label element is to show the option text
       optionLabel.textContent = option;
       optionLabel.htmlFor = option;
-
+      
       optionLabel.style.padding = "1em 30px";
       optionLabel.style.width = "100%";
       
@@ -197,7 +305,7 @@ function shuffleGeneralOption(quizOption) {
         optiondiv.style.backgroundColor = "transparent";
       });
       
-
+      /* The below part append the radioinput and optionlabel to the optiondiv */
       optiondiv.appendChild(radioInput);
       optiondiv.appendChild(optionLabel);
       questionOption.appendChild(optiondiv)
@@ -205,28 +313,35 @@ function shuffleGeneralOption(quizOption) {
     });
   }
 
+  /* This function is to load the score after they finish the quiz */
   function loadScore(){
     const totalScore = document.getElementById("score");
+    /* The below if else statement is to see if the current quiz they are doing is general or school quiz, check === true mean general quiz
+       Add the score,quiztry and points based on the quiz they are having */
     if(check === true){
-      currentUser.generalScore = score;
-      currentUser.generalquiztry = 1;
-      currentUser.point += score * 5;
+      currentUser.generalScore = score; //set the score to general score
+      currentUser.generalquiztry = 1; //Set quiztry to 1, one day can only have 1 try
+      currentUser.point += score * 5; //each score get 5 points
     }
     else{
-      currentUser.score = score;
-      currentUser.quiztry = 1;
-      currentUser.point += score * 5;
+      currentUser.score = score; 
+      currentUser.quiztry = 1; //Set quiztry to 1, one day can only have 1 try
+      currentUser.point += score * 5; //each score get 5 points
     }
-    console.log(currentUser.point)
-    totalScore.textContent = `Your score is ${score} out of ${currentQuiz.length}`;
+
+    totalScore.textContent = `Your score is ${score} out of ${currentQuiz.length}`; //Show the score to user
+
+    /* The below function direct user back to home page 5000ms later after they finish the quiz, */
     setTimeout(function(){
-      window.location.href = "home.html";
+      window.location.href = "home.html"; 
     },5000);
     
     
-    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+    localStorage.setItem('currentUser', JSON.stringify(currentUser)) //update the localstorage
+
+    /* The below fetch is to get the currentUser data, then update it */
     const updateResponse = fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
-        method: 'PUT',
+        method: 'PUT', //update the currentUser in restdb
         headers: {
             'Content-Type': 'application/json',
             'x-apikey': APIKEY // Your API key
@@ -237,7 +352,10 @@ function shuffleGeneralOption(quizOption) {
 
   }
 
+  /* The below function is to load the next question */
   function nextQues(quizData){
+
+    /* Check if the question they are having is the last question or not, if yes,load the score */
     if (currentQuestionIndex < quizData.length - 1) {
       currentQuestionIndex++;
       loadQuiz(quizData);
@@ -250,33 +368,42 @@ function shuffleGeneralOption(quizOption) {
     }
   }
 
+  /* The below function is to check the answer everytime user click next */
   function checkAns() {
 
-    const selectedAns = document.querySelector('input[name="answer"]:checked').value;
+    const selectedAns = document.querySelector('input[name="answer"]:checked').value; //Get the answer
     
+    //Check if answer is correct
     if (selectedAns === currentQuiz[currentQuestionIndex].correctAnswer) {
         score++;
-
     } 
-    nextQues(currentQuiz);
+    nextQues(currentQuiz); //go to next question
   }
 
 document.addEventListener("DOMContentLoaded", async function () {
 
-  await fetchQuestions();
+  await fetchQuestions(); //call the fetchQuestions function
+  //Check if generalCheck is true, if yes, the quiz is generalquiz
   if(generalCheck === "true"){
-    check = true;
+    document.getElementById("quizTitle").innerHTML = "General Quiz"
+    check = true; //set check to true for point adding in loadScore function
     loadQuiz(generalQuizData);
-    currentQuiz = generalQuizData;
+    currentQuiz = generalQuizData; //set the currentQuiz to generalQuiz
   }else{
+    //if generalcheck is not true, quiz is school quiz and check the currentuser school to show respective quiz
     if (currentUser && currentUser.school === "Business") {
+      document.getElementById("quizTitle").innerHTML = "Business Quiz"
       loadQuiz(businessQuizData);
-      currentQuiz = businessQuizData;
+      currentQuiz = businessQuizData;//set the currentQuiz to it quiz
   } else if (currentUser && currentUser.school === "Information Technology") {
+    document.getElementById("quizTitle").innerHTML = "Information Technology Quiz"
       loadQuiz(itQuizData);
-      currentQuiz = itQuizData;
+      currentQuiz = itQuizData;//set the currentQuiz to business quiz
   }
   }
+
+  /* This part is to let generalCheck to false and set to localstorage when they leave the quiz.html
+     so when they come back to quiz.html, the quiz will not be generalquiz again */
   window.addEventListener("beforeunload",function(){
     localStorage.setItem("generalCheck",false)
   })

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded",function(){
     const APIKEY = "65c2573e71a488dc268b0930"
 
+    /* The below function will be called if user click sign up button */
     document.getElementById("sign-up-submit").addEventListener("click",async function(e){
         e.preventDefault();
 
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded",function(){
         let studentPassword = document.getElementById("student-pswd").value;
         let studentPoint = 0;
 
+        //Set the jsondata based on user input
         let jsondata = {
             "name": studentName,
             "studentEmail": studentEmail,
@@ -19,7 +21,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
         async function checkExistEmail(studentEmail){
             const response = await fetch(`https://fedtest-b042.restdb.io/rest/student?q={"studentEmail":"${studentEmail}"}`, {
-            method: 'GET',
+            method: 'GET', //Get the student the same as studentEmail input to check if there is already existing student email
             headers: {
                 'Content-Type': 'application/json',
                 'x-apikey': APIKEY // Your API key
@@ -27,13 +29,13 @@ document.addEventListener("DOMContentLoaded",function(){
             });
             if(response.ok){
                 const data = await response.json();
-                console.log(data);
+                //Check if data.length is more than 0, if yes, there is existing email, if not, POST the student information to restdb
                 if(data.length > 0){
                     alert("There is existing email!");
                 }else{
                     currentUser = jsondata;
                     let settings = {
-                    method: "POST",
+                    method: "POST", //Post the information to restdb
                     headers: {
                         "Content-Type": "application/json",
                         "x-apikey": APIKEY,
@@ -49,12 +51,11 @@ document.addEventListener("DOMContentLoaded",function(){
                 fetch("https://fedtest-b042.restdb.io/rest/student",settings)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);
                         document.getElementById("sign-up-submit").disabled = false;
 
                     })
                     alert("Sign-up successfully!");
-                    window.location.href = "home.html";
+                    window.location.href = "home.html"; //direct user back to homepage
                 }
                 
             }else{
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded",function(){
             } 
         }
         
-        await checkExistEmail(studentEmail);
+        await checkExistEmail(studentEmail); //call the checkExistEmail function
         
         
         });

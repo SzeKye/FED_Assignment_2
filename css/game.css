@@ -37,7 +37,7 @@ body {
   width: 100%;
   display: grid;
   background: #212837;
-  grid-template: repeat(35, 1fr) / repeat(35, 1fr);
+  grid-template: repeat(35, 1fr) / repeat(35, 1fr); /* Set the board size to 35x35 grid */
 }
 .play-board .food {
   background: #FF003D;
@@ -70,6 +70,7 @@ body {
   .controls {
     display: flex;
   }
+  /*Only show the controller if screen size is small*/
   .controls i {
     padding: 15px 0;
     font-size: 1rem;
