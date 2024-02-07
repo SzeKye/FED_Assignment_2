@@ -1,5 +1,5 @@
 const playBoard = document.querySelector(".play-board");
-const scoreElement = document.querySelector(".score");
+const scoreElement = document.querySelector(".current-score");
 const highScoreElement = document.querySelector(".high-score");
 const controls = document.querySelectorAll(".controls i");
 const APIKEY = "65c2573e71a488dc268b0930"
@@ -7,7 +7,7 @@ var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 let gameOver = false;
 let foodX, foodY;
 let snakeX = 5, snakeY = 5;
-let velocityX = 0, velocityY = 0;
+let directionX = 0, directionY = 0;
 let snakeBody = [];
 let setIntervalId;
 let score = 0;
@@ -15,16 +15,16 @@ let score = 0;
 let highScore = localStorage.getItem("high-score") || 0;
 highScoreElement.innerText = `High Score: ${highScore}`;
 const updateFoodPosition = () => {
-    // Passing a random 1 - 30 value as food position
-    foodX = Math.floor(Math.random() * 30) + 1;
-    foodY = Math.floor(Math.random() * 30) + 1;
+    // Randomly place the food
+    foodX = Math.floor(Math.random() * 35) + 1;
+    foodY = Math.floor(Math.random() * 35) + 1;
 }
 const handleGameOver = async () => {
     // Clearing the timer and reloading the page on game over
     clearInterval(setIntervalId);
     alert(`Game Over! Your score is ${score}`);
     currentUser.gameScore = score;
-    currentUser.gametry = 1;
+    currentUser.gameTry = 1;
     localStorage.setItem('currentUser',JSON.stringify(currentUser));
     const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT',
@@ -37,25 +37,25 @@ const handleGameOver = async () => {
     window.location.href = "home.html";
 }
 const changeDirection = e => {
-    // Changing velocity value based on key press
-    if(e.key === "ArrowUp" && velocityY != 1) {
-        velocityX = 0;
-        velocityY = -1;
-    } else if(e.key === "ArrowDown" && velocityY != -1) {
-        velocityX = 0;
-        velocityY = 1;
-    } else if(e.key === "ArrowLeft" && velocityX != 1) {
-        velocityX = -1;
-        velocityY = 0;
-    } else if(e.key === "ArrowRight" && velocityX != -1) {
-        velocityX = 1;
-        velocityY = 0;
+    // This if else block is for them to change their direction and make sure they are unable to turn back
+    if(e.key === "ArrowUp" && directionY != 1) {
+        directionX = 0;
+        directionY = -1;
+    } else if(e.key === "ArrowDown" && directionY != -1) {
+        directionX = 0;
+        directionY = 1;
+    } else if(e.key === "ArrowLeft" && directionX != 1) {
+        directionX = -1;
+        directionY = 0;
+    } else if(e.key === "ArrowRight" && directionX != -1) {
+        directionX = 1;
+        directionY = 0;
     }
 }
 // Calling changeDirection on each key click and passing key dataset value as an object
 controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 const initGame = () => {
-    if(gameOver) return handleGameOver();
+    if(gameOver) return handleGameOver(); //call handleGameOver function if game is over
     let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
     // Checking if the snake hit the food
     if(snakeX === foodX && snakeY === foodY) {
@@ -67,9 +67,9 @@ const initGame = () => {
         scoreElement.innerText = `Score: ${score}`;
         highScoreElement.innerText = `High Score: ${highScore}`;
     }
-    // Updating the snake's head position based on the current velocity
-    snakeX += velocityX;
-    snakeY += velocityY;
+    // Updating the snake's head position based on the current direction
+    snakeX += directionX;
+    snakeY += directionY;
     
     // Shifting forward the values of the elements in the snake body by one
     for (let i = snakeBody.length - 1; i > 0; i--) {
