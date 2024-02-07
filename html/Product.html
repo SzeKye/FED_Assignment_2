@@ -93,9 +93,9 @@
                 <h3>3500 XP</h3>
 
                 <div class="size-select">
-                    <small>Size:</small>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
+                    <p>Size:</p>
+                    <select class="form-select" aria-label="Select a size">
+                        <option selected>Select a size</option>
                         <option value="XXS" id="xxs">XXS</option>
                         <option value="XXS" id="xs">XS</option>
                         <option value="S" id="s">S</option>
@@ -106,7 +106,35 @@
                     </select>
                 </div>
 
-                <button class="product-btn" id="product-redeem">Redeem</button>
+                <button class="product-btn" data-bs-toggle="modal" data-bs-target="#modal">Redeem</button>
+
+                <div class="modal fade" id="modal">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <section class="modal-header">
+                                <h2>Redemption confirmmation</h2>
+                                <button class="btn-close" data-bs-dismiss="modal"></button>
+                            </section>
+            
+                            <div class="modal-body">
+                                <ol>
+                                    <li>XP will be deducted from your overall XP</li>
+                                    <li>Redeemed products are non-refundable</li>
+                                    <li>Present your student ID at the Ngee Ann Shop to collect your NP merch</li>
+                                </ol>
+                            </div>
+            
+                            <div class="modal-footer">
+                                <div class="btn-group">
+                                    <button class="guideline-btn" id="exit-btn" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="#" class="guideline-btn begin-btn" id="product-redeem">Confirm</a>
+                                </div>
+                            </div> 
+            
+                        </div>        
+                    </div> 
+                </div>
+
                 <div class="product-details">
                     <h5>Details</h5>
                     <p>
