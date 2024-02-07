@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #E3F2FD;
+  background: #cae9ff;
 }
 .game {
   width: 65vmin;
@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   justify-content: center;
   border-radius: 5px;
-  background: #293447;
+  background: #7d49f5;
   box-shadow: 0 20px 40px rgba(52, 87, 220, 0.2);
 }
 .game-details {
@@ -40,7 +40,7 @@ body {
   grid-template: repeat(35, 1fr) / repeat(35, 1fr); /* Set the board size to 35x35 grid */
 }
 .play-board .food {
-  background: #FF003D;
+  background: #fff022;
 }
 .play-board .head {
   background: #60CBFF;

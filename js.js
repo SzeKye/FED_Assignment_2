@@ -31,8 +31,7 @@ fetch(`https://api.data.gov.sg/v1/environment/2-hour-weather-forecast`)
     .then(data => {
         const forecasts = data.items[0].forecasts;
         const clementiForecast = forecasts.find(forecast => forecast.area === 'Clementi');
-        
-        console.log(clementiForecast.forecast);
+        document.getElementById("two-hour-forecast").innerHTML = clementiForecast.forecast;
     })
 
 /* This function reset the score,try and update point every day at 00:00 */
@@ -102,6 +101,8 @@ async function resetScoreTryUpdatePoint(){
         student.quiztry = 0;
         student.generalScore = 0;
         student.generalquiztry = 0;
+        student.gameScore = 0;
+        student.gameTry = 0;
         return student;
     })
 

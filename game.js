@@ -28,6 +28,7 @@ const handleGameOver = async () => {
     alert(`Game Over! Your score is ${score}`);
     currentUser.gameScore = score; 
     currentUser.gameTry = 1; 
+    currentUser.point += gameScore * 5;
     localStorage.setItem('currentUser',JSON.stringify(currentUser));
     const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT', //update the currentUser information to restdb
