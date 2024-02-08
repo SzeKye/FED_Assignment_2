@@ -36,6 +36,9 @@ student for the respective quiz. The student on the leaderboard will get a point
 
 There might be an issue if we used the fetch to access the data too many times per day. If it shows an error about failed to fetch,
 replace the link and API to use another database, some data might be different but they are similar.
+
+The API we used is restdb for storing date, opendb for trivia quiz and weather api from gov.sg for showing current weather.
+
 link: https://fedtest-b042.restdb.io/rest/student
 API: 65c2573e71a488dc268b0930
 
