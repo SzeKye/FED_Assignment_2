@@ -9,13 +9,19 @@ document.addEventListener("DOMContentLoaded",function(){
         let studentEmail = document.getElementById("student-email").value;
         let studentPassword = document.getElementById("student-pswd").value;
         let studentPoint = 0;
+        let studentQuizTry = 0;
+        let studentGeneralTry = 0;
+        let studentGameTry = 0;
 
         //Set the jsondata based on user input
         let jsondata = {
             "name": studentName,
             "studentEmail": studentEmail,
             "password": studentPassword,
-            "point": studentPoint
+            "point": studentPoint,
+            "quiztry": studentQuizTry,
+            "generalquiztry": studentGeneralTry,
+            "gameTry": studentGameTry   
         };
 
 

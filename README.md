@@ -22,8 +22,9 @@ other will get participation points(lesser) and the point
 can be used to redeem our NP T-Shirt which cost 3500 points.
 
 The quiz score, try and game score, try will be resetted everyday at 00:00, this will only work when 
-the home.html are running and when the time is 00:00. User get one try per day for school quiz,
-general quiz and game. One score for quiz and game will get 5 point.
+the home.html are running and when the time is 00:00, and the reset time will be few minutes as database contains
+quite alot of data. User will be directed to login page to login again after reset is done to ensure data is correct 
+when they are using the website. User get one try per day for school quiz, general quiz and 3 try for game. One score for quiz and game will get 5 point.
 
 For the game, we make a mini snake game, each food they eat will give them 1 score,
 for every score they have, they will get 5 points and score and try will be resetted everyday at 00:00
@@ -32,6 +33,17 @@ The game board size is 35x35 grid
 On homepage, ICT page and BA page, there will be a leaderboard showing the user the top 10
 student for the respective quiz. The student on the leaderboard will get a point of
 200 - (i * 20) where i is their ranking.
+
+There might be an issue if we used the fetch to access the data too many times per day. If it shows an error about failed to fetch,
+replace the link and API to use another database, some data might be different but they are similar.
+
+The API we used is restdb for storing date, opendb for trivia quiz and weather api from gov.sg for showing current weather.
+
+link: https://fedtest-b042.restdb.io/rest/student
+API: 65c2573e71a488dc268b0930
+
+link: https://fedassignment2-0612.restdb.io/rest/student
+API: 65c3602a4355fb3995c1b485
 
 ## Credits
 - Storyset. (2020, October 29). Company. https://storyset.com/people    
