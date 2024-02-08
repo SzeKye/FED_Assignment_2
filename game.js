@@ -2,7 +2,7 @@ const playBoard = document.querySelector(".play-board");
 const scoreElement = document.querySelector(".current-score");
 const highScoreElement = document.querySelector(".high-score");
 const controls = document.querySelectorAll(".controls i");
-const APIKEY = "65c3602a4355fb3995c1b485";
+const APIKEY = "65c2573e71a488dc268b0930";
 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 let gameOver = false;
 let foodX, foodY;
