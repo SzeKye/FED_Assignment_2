@@ -1,4 +1,4 @@
-const APIKEY = "65c3602a4355fb3995c1b485"
+const APIKEY = "65c2573e71a488dc268b0930"
 var currentUser = JSON.parse(localStorage.getItem('currentUser')); //Get the currentUser from the localstorage if there is
 
 
@@ -37,7 +37,7 @@ fetch(`https://api.data.gov.sg/v1/environment/2-hour-weather-forecast`)
 /* This function reset the score,try and update point every day at 00:00 */
 async function resetScoreTryUpdatePoint(){
 
-    const response = await fetch(`https://fedassignment2-0612.restdb.io/rest/student`, {
+    const response = await fetch(`https://fedtest-b042.restdb.io/rest/student/`, {
         method: 'GET', //Get all the student from restdb
         headers: {
             'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ async function resetScoreTryUpdatePoint(){
 
         /* The two for loop below is to update the student point to the restdb */
         for(const student of sortedStudent){
-            const updateResponse = await fetch(`https://fedassignment2-0612.restdb.io/rest/student/${student._id}`, {
+            const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${student._id}`, {
             method: 'PUT', //Update the sortedStudent point(for school quiz)
             headers: {  
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ async function resetScoreTryUpdatePoint(){
         }
 
         for(const student of sortedGeneralStudentt){
-            const updateResponse = await fetch(`https://fedassignment2-0612.restdb.io/rest/student/${student._id}`, {
+            const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${student._id}`, {
             method: 'PUT', //Update the generalStudent point(for general quiz)
             headers: {  
                 'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ async function resetScoreTryUpdatePoint(){
 
     /* The below part is to update the student data in restdb based on updatedStudent */
     for(const student of updatedStudent){
-        const updateResponse = await fetch(`https://fedassignment2-0612.restdb.io/rest/student/${student._id}`, {
+        const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${student._id}`, {
         method: 'PUT',
         headers: {  
             'Content-Type': 'application/json',

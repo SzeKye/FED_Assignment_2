@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(e) {
     e.preventDefault();
-    const APIKEY = "65c3602a4355fb3995c1b485"
+    const APIKEY = "65c2573e71a488dc268b0930"
     var currentUser = JSON.parse(localStorage.getItem('currentUser')); //Get the currentUser from localstorage
     let shirtPointElement = document.getElementById("shirt-point"); //Get the shirtpoint element
     let shirtPointText = shirtPointElement.textContent.replace(" XP", ""); //replace the " XP" to "" to only get the number
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             currentUser.point -= 3500; //Deduct currentUser point by 3500 which is the shirt point
             localStorage.setItem('currentUser',JSON.stringify(currentUser)); //Update the localstorage
 
-            const updateResponse = await fetch(`https://fedassignment2-0612.restdb.io/rest/student/${currentUser._id}`, {
+            const updateResponse = await fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
             method: 'PUT', //Update the currentUser point at the restdb
             headers: {  
                 'Content-Type': 'application/json',

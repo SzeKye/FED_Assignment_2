@@ -1,4 +1,4 @@
-const APIKEY = "65c3602a4355fb3995c1b485"
+const APIKEY = "65c2573e71a488dc268b0930"
 
 /* The below itQuizData and businessQuizData is the question for the school quiz */
 const itQuizData = [
@@ -342,7 +342,7 @@ function shuffleGeneralOption(quizOption) {
     localStorage.setItem('currentUser', JSON.stringify(currentUser)) //update the localstorage
 
     /* The below fetch is to get the currentUser data, then update it */
-    const updateResponse = fetch(`https://fedassignment2-0612.restdb.io/rest/student/${currentUser._id}`, {
+    const updateResponse = fetch(`https://fedtest-b042.restdb.io/rest/student/${currentUser._id}`, {
         method: 'PUT', //update the currentUser in restdb
         headers: {
             'Content-Type': 'application/json',

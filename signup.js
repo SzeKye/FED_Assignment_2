@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded",function(){
-    const APIKEY = "65c3602a4355fb3995c1b485"
+    const APIKEY = "65c2573e71a488dc268b0930"
 
     /* The below function will be called if user click sign up button */
     document.getElementById("sign-up-submit").addEventListener("click",async function(e){
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
         async function checkExistEmail(studentEmail){
-            const response = await fetch(`https://fedassignment2-0612.restdb.io/rest/student?q={"studentEmail":"${studentEmail}"}`, {
+            const response = await fetch(`https://fedtest-b042.restdb.io/rest/student?q={"studentEmail":"${studentEmail}"}`, {
             method: 'GET', //Get the student the same as studentEmail input to check if there is already existing student email
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded",function(){
                         }
                     }
 
-                fetch("https://fedassignment2-0612.restdb.io/rest/student",settings)
+                fetch("https://fedtest-b042.restdb.io/rest/student",settings)
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("sign-up-submit").disabled = false;

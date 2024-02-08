@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",function(e){
     e.preventDefault();
-    const APIKEY = "65c3602a4355fb3995c1b485"
+    const APIKEY = "65c2573e71a488dc268b0930"
     getStudent(); //call the getstudent function
 
     // This function get the top 10 student based on their score
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded",function(e){
           },
         }
 
-        fetch("https://fedassignment2-0612.restdb.io/rest/student", settings) //fetch all the student in restdb
+        fetch("https://fedtest-b042.restdb.io/rest/student", settings) //fetch all the student in restdb
           .then(response => response.json())
           .then(response => {
 
