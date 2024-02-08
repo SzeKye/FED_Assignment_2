@@ -58,9 +58,9 @@ document.addEventListener("DOMContentLoaded",function(e){
                 
             }
             // The below part check if the current page is BA,ICT or Home, then show respective leaderboard
-            if(window.location.pathname.endsWith("/ICT.html")){
+            if(window.location.pathname.endsWith("/ict.html")){
                 updateLeaderboard(itFilteredStudent);
-            }else if(window.location.pathname.endsWith("/BA.html")){
+            }else if(window.location.pathname.endsWith("/ba.html")){
                 updateLeaderboard(businessFilteredStudent);
             }else if(window.location.pathname.endsWith("/home.html")){
                 updateLeaderboard(generalStudent);
