@@ -1,5 +1,7 @@
 var currentUser;
-
+// test account login credentials
+// Email: ab@gmail.com
+// Password: 123456
 document.addEventListener("DOMContentLoaded",function(){
     const APIKEY = "65c2573e71a488dc268b0930"
     
