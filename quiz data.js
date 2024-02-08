@@ -287,7 +287,8 @@ function shuffleGeneralOption(quizOption) {
       optionLabel.textContent = option;
       optionLabel.htmlFor = option;
       
-      optionLabel.style.padding = "1em 30px";
+      //gives the styling to the questions
+      optionLabel.style.padding = "1em 30px"; 
       optionLabel.style.width = "100%";
       
       optiondiv.style.font = "500 18px Poppins, sans-serif";
@@ -309,12 +310,13 @@ function shuffleGeneralOption(quizOption) {
       optiondiv.appendChild(radioInput);
       optiondiv.appendChild(optionLabel);
       questionOption.appendChild(optiondiv)
-      // questionOption.appendChild(document.createElement("br"));
     });
   }
 
   /* This function is to load the score after they finish the quiz */
   function loadScore(){
+    const dot = document.getElementById("lottie_bg");
+    dot.style.display = "block";
     const totalScore = document.getElementById("score");
     /* The below if else statement is to see if the current quiz they are doing is general or school quiz, check === true mean general quiz
        Add the score,quiztry and points based on the quiz they are having */

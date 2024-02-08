@@ -17,41 +17,97 @@
             .link-options{
                 left: -80vw;
             }
+            @media screen and (max-width:576px) {
+                .nav-bar a{
+                    display: none;
+                }
+                
+                .nav-top{
+                    width: 100%;
+                    justify-content: flex-end;
+                    padding-right: 4em;
+                }
+
+                .more-options {
+                    right: 0;
+                }
+                .more-options a {
+                    color: #003C77;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: flex;
+                    width: 100%;
+                }
+                .more-options-ext:hover .school-options, .more-options-ext:hover .link-options{
+                    display: block;
+                    left: -18px;
+                    width: 200px;
+                    background-color: #003C77;
+                }
+                .school-options a:hover, .link-options a:hover{
+                    background-color: rgba(255,255,255,0.5);
+                    color: #003C77;
+                }
+                
+                .footer-ext .row ul {
+                    flex-direction: column;
+                    text-align: start;
+                }
+                .logo-for-mobile a{
+                    display: flex;
+                    height: 50px;
+                }
+                .btn-group {
+                    align-items: center;
+                    gap: 20px;
+                }
+                .product-container {
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 10vh 5vw;
+                }
+                .product-picture {
+                    margin-right: 0;
+                }
+            }
         </style>
     </head>
     <body>
         <header>
             <div class="nav-bar">
-
                 <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
-
-                <div class="student-total-points">
-                    <img src="../images/XP-icon.png" alt="student points" height="50">
-                    <h2><span id="total-points"></span></h2> <!-- use js to get the total points of the students from the database -->
+                <div class="logo-for-mobile">
+                    <a href="home.html">
+                        <img src="../images/NPLogo4.png" alt="NP logo">
+                    </a>
                 </div>
-                
-                <div>
-                    <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
-                </div>
-
-                <div id="profile-section">
-                    <div class="more-options-ext">
-                        <img src="../images/profile.png" alt="Profile icon" width="50">
-                        
-                        <div class="more-options">
-                            <a href="#">Edit Profile</a>
-                            <a href="#">History</a>
-                            <a href="#">Account Settings</a>
-                            <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="#">English (United Kingdom)</a>
-                            <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="Log-In.html" id="log-out">Log Out</a>
-                            <a href="quiz.html">wda</a>
-                        </div>
+                <div class="nav-top">
+                    <div class="student-total-points">
+                        <img src="../images/XP-icon.png" alt="student points" height="50">
+                        <h2><span id="total-points"></span></h2> <!-- use js to get the total points of the students from the database -->
                     </div>
-                    <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here, also change it to class instead of id -->
+                    
+                    <div>
+                        <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
+                    </div>
+    
+                    <div id="profile-section">
+                        <div class="more-options-ext">
+                            <img src="../images/profile.png" alt="Profile icon" width="50">
+                            
+                            <div class="more-options">
+                                <a href="#">Edit Profile</a>
+                                <a href="#">History</a>
+                                <a href="#">Account Settings</a>
+                                <hr style="border: 1px dashed #C7C7C7;">
+                                <a href="#">English (United Kingdom)</a>
+                                <hr style="border: 1px dashed #C7C7C7;">
+                                <a href="Log-In.html" id="log-out">Log Out</a>
+                            </div>
+                        </div>
+                        <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here, also change it to class instead of id -->
+                    </div>
                 </div>
-
             </div>
             <div class="lower-nav-bar">
                 <div class="more-options-ext">
@@ -211,36 +267,34 @@
 
         <div class="container">
             <div class="row">
-                <div class="col col-lg-4 col-md-3 col-sm-12 item-layout">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal">
-                        <div class="card item-thumbnail">
-                            <img src="../images/shirt7.jpeg" alt="Black/ Gold Drifit T-Shirt" class="card-img-top">
-                            <div class="card-body">
-                                <h2 class="card-title">Ngee Ann Polytechnic Unisex Black/ Gold Drifit T-Shirt</h2>
-                                <small class="card-subtitle">
-                                    <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
-                                </small>
-                                <div class="card-text">
-                                    <p>Price: 3500 XP</p>
-                                    <p>Description: Ngee Ann Dry Fit Black/ Gold Dry Fit Unisex Round Neck T-Shirt</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <small>Ngee Ann Shop Blk 58 #01-06</small>
+                <div class="col col-lg-4 col-md-3 col-sm-12 align-items-stretch mb-3">      
+                    <div class="card item-thumbnail">
+                        <img src="../images/shirt14.jpeg" alt="NP Unisex Cotton Tees - Misty Range" class="card-img-top">
+                        <div class="card-body">
+                            <h2 class="card-title">NP Unisex Cotton Tees - Misty Range in 3 Colours - Maroon, Navy & Heather Grey</h2>
+                            <small class="card-subtitle">
+                                <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
+                            </small>
+                            <div class="card-text">
+                                <p> 3500 XP</p>
+                                <p>Description: Soft and smooth handfeel fabric. You'll never wanna take it off! ☁️</p>
                             </div>
                         </div>
-                    </a>       
+                        <div class="card-footer">
+                            <small>Ngee Ann Shop Blk 58 #01-06</small>
+                        </div>
+                    </div>
                 </div>
-                <div class="col col-lg-4 col-md-3 col-sm-12 item-layout">
+                <div class="col col-lg-4 col-md-3 col-sm-12 align-items-stretch mb-3 d-flex">
                     <div class="card item-thumbnail">
-                        <img src="../images/shirt1.jpg" alt="shirt1" class="card-img-top">
+                        <img src="../images/shirt1.jpg" alt="Ngee Ann Polytechnic Unisex Black Mottled Drifit T-shirt" class="card-img-top">
                         <div class="card-body">
                             <h2 class="card-title">Ngee Ann Polytechnic Unisex Black Mottled Drifit T-shirt</h2>
                             <small class="card-subtitle">
                                 <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
                             </small>
                             <div class="card-text">
-                                <p>Price: 3500 XP</p>
+                                <p>3500 XP</p>
                                 <p>Description: Nice Black Drifit with Colourful Print</p>
                             </div>
                         </div>
@@ -249,16 +303,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col col-lg-4 col-md-3 col-sm-12 item-layout">
+                <div class="col col-lg-4 col-md-3 col-sm-12 align-items-stretch mb-3 d-flex">
                     <div class="card item-thumbnail">
-                        <img src="../images/shirt10.jpeg" alt="shirt10" class="card-img-top">
+                        <img src="../images/shirt10.jpeg" alt="Ngee Ann Polytechnic Unisex Drifit Black with Red Print" class="card-img-top">
                         <div class="card-body">
                             <h2 class="card-title">Ngee Ann Polytechnic Unisex Drifit Black with Red Print</h2>
                             <small class="card-subtitle">
                                 <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
                             </small>
                             <div class="card-text">
-                                <p>Price: 3500 XP</p>
+                                <p>3500 XP</p>
                                 <p>Description: Nice comfortable tee for anytime, anywhere</p>
                             </div>
                         </div>
@@ -268,16 +322,16 @@
                     </div>
                 </div>
                 
-                <div class="col col-lg-4 col-md-3 col-sm-12 item-layout">
+                <div class="col col-lg-4 col-md-3 col-sm-12 align-items-stretch mb-3 d-flex">
                     <div class="card item-thumbnail">
-                        <img src="../images/shirt8.jpeg" alt="shirt8" class="card-img-top">
+                        <img src="../images/shirt8.jpeg" alt="Ngee Ann Polytechnic Rose Gold Drifit Tee" class="card-img-top">
                         <div class="card-body">
                             <h2 class="card-title">Ngee Ann Polytechnic Rose Gold Drifit Tee</h2>
                             <small class="card-subtitle">
                                 <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
                             </small>
                             <div class="card-text">
-                                <p>Price: 3500 XP</p>
+                                <p>3500 XP</p>
                                 <p>Description: Another Metallic Range of  Unisex Tees, the Black Rose Gold brings brightness and cheer.</p>
                             </div>
                         </div>
@@ -287,16 +341,16 @@
                     </div>
                 </div>
                 
-                <div class="col col-lg-4 col-md-3 col-sm-12 item-layout">
+                <div class="col col-lg-4 col-md-3 col-sm-12 align-items-stretch mb-3 d-flex">
                     <div class="card item-thumbnail">
-                        <img src="../images/shirt.png" alt="shirt" class="card-img-top">
+                        <img src="../images/shirt.png" alt="60th Anniversary Limited Edition" class="card-img-top">
                         <div class="card-body">
                             <h2 class="card-title">Ngee Ann Polytechnic Unisex Drifit Tee - 60th Anniversary Limited Edition</h2>
                             <small class="card-subtitle">
                                 <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
                             </small>
                             <div class="card-text">
-                                <p>Price: 3500 XP</p>
+                                <p>3500 XP</p>
                                 <p>Description: Celebrate NP 60th Anniversary with this Limited Edition Tee!</p>
                             </div>
                         </div>
@@ -305,16 +359,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col col-lg-4 col-md-3 col-sm-12 item-layout">
+                <div class="col col-lg-4 col-md-3 col-sm-12 align-items-stretch mb-3 d-flex">
                     <div class="card item-thumbnail">
-                        <img src="../images/shirt1.jpg" alt="shirt1" class="card-img-top">
+                        <img src="../images/shirt4.jpeg" alt="Ngee Ann Polytechnic Unisex Drifit Black with 2 Yellow Stripes" class="card-img-top">
                         <div class="card-body">
-                            <h2 class="card-title">Ngee Ann Polytechnic Unisex Black Mottled Drifit T-shirt</h2>
+                            <h2 class="card-title">Ngee Ann Polytechnic Unisex Drifit Black with 2 Yellow Stripes</h2>
                             <small class="card-subtitle">
                                 <dotlottie-player src="https://lottie.host/f1b8f6aa-e599-4507-98a5-01d9f37d5158/cEXYUEZD1z.json" background="transparent" speed="1" style="width: 150px; height: 150px; margin: -3em 0;" direction="1" playMode="normal" autoplay loop></dotlottie-player>
                             </small>
                             <div class="card-text">
-                                <p>Price: 3500 XP</p>
+                                <p>3500 XP</p>
                                 <p>Description: Nice Black Drifit with Colourful Print</p>
                             </div>
                         </div>
@@ -351,41 +405,7 @@
                 </div>
             </div>
         </footer>
-        <script>
-            // displays the games under games.html
-            var img_number = 0; //first element in arrays have an index of 0
-            imgShow(img_number); //calls function and passes in 0
 
-            function changeImg(x) {
-            imgShow(img_number += x);
-            }
-
-            // takes an integer x passed in through the nav_bullet and number will = x
-            function currentImg(x) {
-            imgShow(img_number = x);
-            }
-
-
-            function imgShow(x) {
-            let i;
-            let imgs_array = document.getElementsByClassName("shop");
-            let nav_bullet_array = document.getElementsByClassName("nav_bullet");
-            if (x > imgs_array.length-1) { //for the arrows
-                img_number = 0
-                }    //last img goes to first img in the array
-            if (x < 0) {
-                img_number = imgs_array.length-1;
-                }     //first img goes to last img in the array
-            for (i = 0; i < imgs_array.length; i++) { // sets all display property to none
-                imgs_array[i].style.display = "none";  
-            }
-            for (i = 0; i < nav_bullet_array.length; i++) {
-                nav_bullet_array[i].className = nav_bullet_array[i].className.replace("shows", ""); //removes any classes called show from all elements in the nav_bullet_array
-            }
-            imgs_array[img_number].style.display = "flex";  //shows the image 
-            nav_bullet_array[img_number].className += " shows"; //sets the respective bullet of the img to show 
-            }
-        </script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js.js"></script>
         <script src="../redeem.js"></script>

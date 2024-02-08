@@ -17,40 +17,93 @@
             .link-options{
                 left: -80.5vw;
             }
-            
+            @media screen and (max-width:576px) {
+                .nav-bar a{
+                    display: none;
+                    
+                }
+                
+                .nav-top{
+                    width: 100%;
+                    justify-content: flex-end;
+                    padding-right: 4em;
+                }
+
+                .more-options {
+                    right: 0;
+                }
+                .more-options a {
+                    color: #003C77;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: flex;
+                    width: 100%;
+                }
+                .more-options-ext:hover .school-options, .more-options-ext:hover .link-options{
+                    display: block;
+                    left: -18px;
+                    width: 200px;
+                    background-color: #003C77;
+                }
+                .school-options a:hover, .link-options a:hover{
+                    background-color: rgba(255,255,255,0.5);
+                    color: #003C77;
+                }
+                .hero img {
+                    width: auto;
+                }
+                .school-hero {
+                    text-align: center;
+                }
+                .footer-ext .row ul {
+                    flex-direction: column;
+                    text-align: start;
+                }
+                .nav-bar .logo-for-mobile a{
+                    display: flex;
+                    height: 50px;
+                }
+                .btn-group {
+                    align-items: center;
+                    gap: 20px;
+                }
+            }
         </style>      
     </head>
     <body>
         <header>
             <div class="nav-bar">
-                <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
-
-                <div class="student-total-points">
-                    <img src="../images/XP-icon.png" alt="student points" height="50">
-                    <h1><span id="total-points"></span></h1> <!-- use js to get the total points of the students from the database -->
+                <a href="home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
+                <div class="logo-for-mobile">
+                    <a href="home.html">
+                        <img src="../images/NPLogo4.png" alt="NP logo">
+                    </a>
                 </div>
-
-                <div>
-                    <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
-                </div>
-
-                <div id="profile-section">
-                    <div class="more-options-ext">
-                        <img src="../images/profile.png" alt="Profile icon" width="50">
-                        
-                        <div class="more-options">
-                            <a href="#">Edit Profile</a>
-                            <a href="#">History</a>
-                            <a href="#">Account Settings</a>
-                            <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="#">English (United Kingdom)</a>
-                            <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="Log-In.html" id="log-out">Log Out</a>
-                        </div>
+                <div class="nav-top">
+                    <div class="student-total-points">
+                        <img src="../images/XP-icon.png" alt="student points" height="50">
+                        <h2><span id="total-points"></span></h2> <!-- use js to get the total points of the students from the database -->
                     </div>
-                    <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here -->
-                </div>
+                    <div>
+                        <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
+                    </div>
+                    <div id="profile-section">
+                        <div class="more-options-ext">
+                            <img src="../images/profile.png" alt="Profile icon" width="50">
 
+                            <div class="more-options">
+                                <a href="#">Edit Profile</a>
+                                <a href="#">History</a>
+                                <a href="#">Account Settings</a>
+                                <hr style="border: 1px dashed #C7C7C7;">
+                                <a href="#">English (United Kingdom)</a>
+                                <hr style="border: 1px dashed #C7C7C7;">
+                                <a href="Log-In.html" id="log-out">Log Out</a>
+                            </div>
+                        </div>
+                        <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here -->
+                    </div>
+                </div>
             </div>
 
             <div class="lower-nav-bar">
@@ -90,7 +143,7 @@
         </div>
 
         <section class="school-hero">
-            <h1>A Learning Experience With That Something Xtra</h1>
+            <h2>A Learning Experience With That Something Xtra</h2>
             <p>Learn. Practice. Play. Repeat. Regardless of which school you come from, we welcome you to learn a thing or two about ICT</p>
             <button id="practice-start" data-bs-toggle="modal" data-bs-target="#modal">Practice</button>
         </section>
@@ -106,13 +159,16 @@
                     <div class="modal-body">
                         <ol>
                             <li>There wiil be 20 MCQ questions, each correct answer gets you 5 points.</li>
+                            <li>Points earned from the quiz will contribute to your overall XP.</li>
+                            <li>There is no time limit to this quiz but you only get one try per day.</li>
+                            <li>Are you ready?</li>
                         </ol>
                     </div>
     
                     <div class="modal-footer">
                         <div class="btn-group">
                             <button class="guideline-btn" id="exit-btn" data-bs-dismiss="modal">Exit</button>
-                            <button class="guideline-btn begin-btn" id="it-school">Begin</button>
+                            <button class="guideline-btn begin-btn" id="it-school">Bring it on!</button>
                         </div>
                     </div> 
     
@@ -121,18 +177,21 @@
         </div>
 
         <section class="container mt-5">
-            <h2>ICT Leaderboard (<span id="total-contacts"></span>)</h2>
-            <table class="table" id="contact-list">
+            <h2 style="text-align: center;">ICT Hall of Fame</h2>
+            <h3 style="text-align: center; font-size: 19px;">Top 10 get extra XP based on their placing at the end of each day</h3>
+            <p style="text-align: center; font-size: 18px">Total number of players: <span id="total-contacts"></span></p>
+            <table class="table table-margin" id="contact-list">
                 <thead>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Score</th>                 
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Score</th>        
+                    </tr>        
                 </thead>
-                <!-- This will be filled with information later -->
+                <!-- Table will be populated by the js provided if there are players -->
                 <tbody></tbody>
             </table>
         </section>
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
         
         <footer class="footer-ext">
             <h5>Don't miss out on the fun!</h5>
@@ -163,7 +222,7 @@
         <script src="../js.js"></script>
         <script src="../ICT.js"></script>
         <script src="../leaderboard.js"></script>
-        
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
         
     </body>
 </html>

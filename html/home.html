@@ -20,39 +20,123 @@
             .hero img{
                 filter: brightness(70%);
             }
+
+            @media screen and (max-width:576px) {
+                .nav-bar a{
+                    display: none;
+                    
+                }
+                
+                .nav-top{
+                    width: 100%;
+                    justify-content: flex-end;
+                    padding-right: 4em;
+                }
+
+                .more-options {
+                    right: 0;
+                }
+                .more-options a {
+                    color: #003C77;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: flex;
+                    width: 100%;
+                }
+                .more-options-ext:hover .school-options, .more-options-ext:hover .link-options{
+                    display: block;
+                    left: -18px;
+                    width: 200px;
+                    background-color: #003C77;
+                }
+                .school-options a:hover, .link-options a:hover{
+                    background-color: rgba(255,255,255,0.5);
+                    color: #003C77;
+                }
+                .hero img {
+                    width: auto;
+                }
+                .school-hero {
+                    text-align: center;
+                }
+                
+                .footer-ext .row ul {
+                    flex-direction: column;
+                    text-align: start;
+                }
+                .logo-for-mobile a{
+                    display: flex;
+                    height: 50px;
+                }
+                .btn-group {
+                    align-items: center;
+                    gap: 20px;
+                }
+                .direction {
+                    display:flex;
+                    flex-direction: column;
+                }
+                .direction a{
+                    text-align: center;
+                }
+                .home-container {
+                    padding-left: 5vw;
+                }
+                .weatherAtNP {
+                    text-align: center;
+                }
+                
+                #map-des{
+                    display: none;
+                }
+                #map-shortcut{
+                    display: none;
+                }
+                #RR img{
+                    width: 100%;
+                    height: 56.25vw;
+                    object-fit: cover;
+                }
+                .games_txt h2{
+                    font-size: 24px;
+                }
+                
+            }
         </style> 
     </head> 
     <body>
         <header>
             <div class="nav-bar">
-
-                <a href="Home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
-
-                <div class="student-total-points">
-                    <img src="../images/XP-icon.png" alt="student points" height="50">
-                    <h2><span id="total-points"></span></h2> <!-- use js to get the total points of the students from the database -->
+                <a href="home.html" target="_self" id="logo-position"><img src="../images/NPLogo2.png" alt="Ngee Ann logo" width="200"></a>
+                <div class="logo-for-mobile">
+                    <a href="home.html">
+                        <img src="../images/NPLogo4.png" alt="NP logo">
+                    </a>
                 </div>
-                
-                <div>
-                    <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
-                </div>
-
-                <div id="profile-section">
-                    <div class="more-options-ext">
-                        <img src="../images/profile.png" alt="Profile icon" width="50">
-                        
-                        <div class="more-options">
-                            <a href="#">Edit Profile</a>
-                            <a href="#">History</a>
-                            <a href="#">Account Settings</a>
-                            <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="#">English (United Kingdom)</a>
-                            <hr style="border: 1px dashed #C7C7C7;">
-                            <a href="Log-In.html" id="log-out">Log Out</a>
-                            <a href="quiz.html">wda</a>
-                        </div>
+                <div class="nav-top">
+                    <div class="student-total-points">
+                        <img src="../images/XP-icon.png" alt="student points" height="50">
+                        <h2><span id="total-points"></span></h2> <!-- use js to get the total points of the students from the database -->
                     </div>
-                    <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here, also change it to class instead of id -->
+                    <div>
+                        <dotlottie-player src="https://lottie.host/9d124156-fdd6-4c2a-9cf6-ff17a9b6e570/4ALxaLrrSz.json" background="transparent" speed="1" style="width: 50px; height: 50px" direction="1" playMode="normal" autoplay></dotlottie-player>
+                    </div>
+                    <div id="profile-section">
+                        <div class="more-options-ext">
+                            <img src="../images/profile.png" alt="Profile icon" width="50">
+
+                            <div class="more-options">
+                                <a href="#">Edit Profile</a>
+                                <a href="#">History</a>
+                                <a href="#">Account Settings</a>
+                                <hr style="border: 1px dashed #C7C7C7;">
+                                <a href="#">English (United Kingdom)</a>
+                                <hr style="border: 1px dashed #C7C7C7;">
+                                <a href="Log-In.html" id="log-out">Log Out</a>
+                            </div>
+                        </div>
+                        <p><span id="name-of-student1"></span></p> <!-- use js to get the name of the student and put it here -->
+                    </div>
                 </div>
 
             </div>
@@ -94,11 +178,6 @@
             </section>
         </div>
         <section class="home-container">
-            <!-- <button id="business-school">dwa</button>
-            <button id="it-school">dwaa</button>
-            <button id="general">haha</button>
-            <button id="it-leaderboard">123</button>
-            <br> -->
             <h1>Another kind of Xtra</h1>
             <p>
                 Introducing the first of its kind, NP has joined forces with the Ngee Ann Shop to create an innovative gamified website.<br>
@@ -111,8 +190,10 @@
                 
                 P.S. Coming soon are exciting new ways to earn points and places to redeem them so stay tuned!
             </p>
-            <div class="btn-group">
+            <div class="direction">
                 <a href="#generalknowledgequiz">General Knowledge Quiz ↓</a>                
+                <a href="#map-des" id="map-shortcut">School/ School Map ↓</a>                
+                <a href="#RR">Rest & Relaxation ↓</a>                
             </div>
         </section>
         
@@ -122,7 +203,8 @@
             <dotlottie-player src="https://lottie.host/a8f3d7d4-1af6-4ead-94c0-083b9ecb1106/ofogdrPfZl.json" background="transparent" speed="1" style="width: 300px; height: 300px; margin: -30px 0;" direction="1" playMode="normal" loop autoplay></dotlottie-player>
             <h2>Current 2 hour forecast: <span id="two-hour-forecast"></span></h2>
         </section>
-        <section class="map-des">
+
+        <section id="map-des">
             <h1>Schools</h1>
             <p>Click on the dropdown pin of your school's block to navigate to your school's leaderboard and quiz</p>
             <div class="school-map">
@@ -154,6 +236,9 @@
                     <div class="modal-body">
                         <ol>
                             <li>There wiil be 20 MCQ questions, each correct answer gets you 10 XP.</li>
+                            <li>Points earned from the quiz will contribute to your overall XP.</li>
+                            <li>There is no time limit to this quiz but you only get one try per day.</li>
+                            <li>Are you ready?</li>
                         </ol>
                     </div>
     
@@ -169,19 +254,24 @@
         </div>
 
         <section class="container mt-5" style="margin-bottom: 10vh;">
-            <h2>Top 3<span id="total-contacts"></span></h2>
+            <h2 style="text-align: center;">The Knowledgables</h2>
+            <h3 style="text-align: center; font-size: 19px;">Top 3 get extra XP based on their placing at the end of each day</h3>
+            <p style="text-align: center; font-size: 18px">Total number of players: <span id="total-contacts"></span></p>
             <table class="table" id="contact-list">
                 <thead>
-                <th>Name</th>
-                <th>Email</th>
-                <th>General Score</th>                 
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>General Score</th>   
+                    </tr>
+                              
                 </thead>
-                <!-- This will be filled with information later -->
+                <!-- Table will be populated by the js provided if there are players -->
                 <tbody></tbody>
             </table>
         </section>
 
-        <div class="games">
+        <div class="games" id="RR">
             <img src="../images/play-banner.jpg" alt="test" style="filter: brightness(60%);">
             <section class="games_txt">
                 <h2>Rest and Relaxation</h2>
@@ -217,22 +307,21 @@
         </footer>
 
         <script src="../js/bootstrap.min.js"></script>
-        <script src="../leaderboard.js"></script>
+        <script src="../leaderboard.js"></script> 
         <script src="../js.js"></script>
         
         <script>
-            let schoolPins = document.querySelectorAll("area");
+            let schoolPins = document.querySelectorAll("area"); //gets all area tags under the map
             const map = document.querySelector(".school-map");
             schoolPins.forEach(area =>{
                 area.addEventListener("mouseover",function(e){
                     const findTooltip = document.querySelector(".popup");
-                    if (findTooltip!= null) {
-                        findTooltip.remove();
-                    }
                     e.preventDefault();
                     const popup = document.createElement("div");
                     popup.className = "popup";
                     popup.innerHTML = `<h4>${area.title}</h4><p>${area.attributes.data.value}</p>`;
+                    
+                    //general styling of the popup
                     popup.style.font = "500 16px Poppins, sans-serif";
                     popup.style.color = "#FFF";
                     popup.style.display = "block";
@@ -243,7 +332,8 @@
                     popup.style.width = "150px";
                     popup.style.textAlign = "center";
                     popup.style.boxShadow = "2px 2px 2px rgba(0,0,0,0.5)";
-                    if (area.title == "SOE") {
+                    
+                    if (area.title == "SOE") { //gives specific styling 
                         popup.style.top = "20%";
                         popup.style.left = "40%";
                         popup.style.backgroundColor = "rgba(0, 158, 193, 0.8)";
@@ -262,7 +352,9 @@
                     area.addEventListener("mouseout",function(e){
                         e.preventDefault();
                         const findTooltip = document.querySelector(".popup");
-                        findTooltip.remove();
+                        if (findTooltip!= null) { //checks whether the element contains anything first
+                            findTooltip.remove(); //makes it disappear when the mouse is no longer hovering above it
+                        } 
                     });
                 });
                 

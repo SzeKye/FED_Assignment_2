@@ -15,13 +15,16 @@ ul{
     margin: 0;
     padding: 0;
 }
+.table-margin{
+    margin-bottom: 10vh;
+}
+
 /*School*/
 .school-hero {
     margin: 5vh 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    align-content: center;
     flex-direction: column;
     width: 100%;
 }
@@ -38,6 +41,14 @@ ul{
     padding: 2em 0 1em 13.5vw;
     align-items: center;
     gap: 2vw;
+}
+.nav-top {
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+}
+.logo-for-mobile a{
+    display: none;
 }
 #logo-position{
     margin-right: 43vw;
@@ -119,13 +130,13 @@ ul{
     display: flex;
     margin: 0;
 }
+
 .hero, .games{
     display: flex;
     width: 100%;
     justify-content: center;
     position: relative;
 }
-
 
 .hero img{
     width: 90%;
@@ -186,7 +197,7 @@ ul{
     padding-top: 2em;
     padding-bottom: 2em;
 }
-.map-des {
+#map-des {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -203,7 +214,18 @@ ul{
 .school-map {
     position: relative;
 }
-
+.direction {
+    display: flex;
+}
+.direction a{
+    margin: 10px 20px 10px 0;
+    padding: 10px;
+    background-color: #FFA626;
+    color: #003C77;
+    text-decoration: none;
+    border-radius: 5px;
+    font: 500 20px "Poppins", sans-serif;
+}
 /* Log In. html*/
 #login-submit, #sign-up-submit{
     font-size: 15px;
@@ -317,14 +339,19 @@ input:focus{
     display: flex;
     justify-content: center;
 }
+.shop-ext img {
+    height: 50vh;
+}
 .shop_des{
 	display: flex;
     color: #000;
     flex-direction: row;
+    padding-right: 3vw;
+    max-width: 53vw;
 }
-
 .shop_details{
 	font-weight: 500;
+    padding-right: 20px;
 }
 
 #product-light{
@@ -360,15 +387,9 @@ input:focus{
     justify-content: center;
 }
 
-
-.separator{
-	right: 0;
-}
-
 .nav_bullet_section{
     text-align:center
 }
-
 
 .hero_txt, .games_txt { /* look at other pages first*/
 	display: flex;
@@ -377,8 +398,8 @@ input:focus{
 	flex-direction: column;
 	position: absolute;
 }
-.hero_txt h1, .games_txt h2{
-	color: #FFFFFF;
+.hero_txt h2, .games_txt h2{
+	color: #FFF;
 	font-weight: 600;
 	font-size: 40px;
 	margin-bottom: 0;
@@ -387,7 +408,7 @@ input:focus{
 .hero_txt p{
 	font-weight: 500;
 	font-size: 22px;
-	color: #FFFFFF;
+	color: #FFF;
 }
 
 #product-nav-padding {
@@ -401,20 +422,31 @@ input:focus{
 	font-size: 24px;
 	font-weight: 500;
 }
-#product-types a{
+.types-nav, #product-types a{
     color: #000;
     font-weight: 500;
     text-decoration: none;
 }
-.item-layout{
-    margin-bottom: 20px;
+.types-nav:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 0.1em;
+    bottom: 0;
+    left: 0;
+    background-color: #003C77;
+    transform-origin: bottom right;
+    transition: opacity 300ms, transform 300ms;
 }
-.item-layout a{
-    text-decoration: none;
-    color: #000;
+.types-nav:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
+
 .item-thumbnail{
     padding: 10px;
+    cursor: pointer;
 }
 
 .card-text p{
@@ -487,7 +519,7 @@ input:focus{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 200px;
     height: 40px;
     border-radius: 5px;
     font-weight: 600;
